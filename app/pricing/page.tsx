@@ -5,56 +5,56 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { Price } from '@/lib/types';
 
+// Fallback prices if Firestore is not configured
+const fallbackPrices: Price[] = [
+  {
+    id: '1',
+    name: 'Vardagsbowling',
+    description: 'Måndag - Fredag före 17:00',
+    price: 150,
+    duration: 'per timme'
+  },
+  {
+    id: '2',
+    name: 'Kvällsbowling',
+    description: 'Vardagar efter 17:00',
+    price: 200,
+    duration: 'per timme'
+  },
+  {
+    id: '3',
+    name: 'Helgbowling',
+    description: 'Lördag & Söndag',
+    price: 250,
+    duration: 'per timme'
+  },
+  {
+    id: '4',
+    name: 'Skolbowling',
+    description: 'För skolor och föreningar',
+    price: 120,
+    duration: 'per timme'
+  },
+  {
+    id: '5',
+    name: 'Barnkalas',
+    description: 'Inkluderar bowling, mat och dryck',
+    price: 2500,
+    duration: 'paket för 10 barn'
+  },
+  {
+    id: '6',
+    name: 'Företagsevent',
+    description: 'Bowling och mingel för företag',
+    price: 5000,
+    duration: 'paket från'
+  }
+];
+
 export default function PricingPage() {
   const [prices, setPrices] = useState<Price[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // Fallback prices if Firestore is not configured
-  const fallbackPrices: Price[] = [
-    {
-      id: '1',
-      name: 'Vardagsbowling',
-      description: 'Måndag - Fredag före 17:00',
-      price: 150,
-      duration: 'per timme'
-    },
-    {
-      id: '2',
-      name: 'Kvällsbowling',
-      description: 'Vardagar efter 17:00',
-      price: 200,
-      duration: 'per timme'
-    },
-    {
-      id: '3',
-      name: 'Helgbowling',
-      description: 'Lördag & Söndag',
-      price: 250,
-      duration: 'per timme'
-    },
-    {
-      id: '4',
-      name: 'Skolbowling',
-      description: 'För skolor och föreningar',
-      price: 120,
-      duration: 'per timme'
-    },
-    {
-      id: '5',
-      name: 'Barnkalas',
-      description: 'Inkluderar bowling, mat och dryck',
-      price: 2500,
-      duration: 'paket för 10 barn'
-    },
-    {
-      id: '6',
-      name: 'Företagsevent',
-      description: 'Bowling och mingel för företag',
-      price: 5000,
-      duration: 'paket från'
-    }
-  ];
 
   useEffect(() => {
     async function fetchPrices() {

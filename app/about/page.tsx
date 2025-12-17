@@ -6,20 +6,20 @@ import { db } from '@/lib/firebase';
 import { OpeningHours } from '@/lib/types';
 import { CldImage } from 'next-cloudinary';
 
+// Fallback opening hours if Firestore is not configured
+const fallbackHours: OpeningHours[] = [
+  { id: '1', day: 'Måndag', hours: '12:00 - 22:00', isOpen: true },
+  { id: '2', day: 'Tisdag', hours: '12:00 - 22:00', isOpen: true },
+  { id: '3', day: 'Onsdag', hours: '12:00 - 22:00', isOpen: true },
+  { id: '4', day: 'Torsdag', hours: '12:00 - 22:00', isOpen: true },
+  { id: '5', day: 'Fredag', hours: '12:00 - 01:00', isOpen: true },
+  { id: '6', day: 'Lördag', hours: '10:00 - 01:00', isOpen: true },
+  { id: '7', day: 'Söndag', hours: '10:00 - 22:00', isOpen: true },
+];
+
 export default function AboutPage() {
   const [openingHours, setOpeningHours] = useState<OpeningHours[]>([]);
   const [loading, setLoading] = useState(true);
-
-  // Fallback opening hours if Firestore is not configured
-  const fallbackHours: OpeningHours[] = [
-    { id: '1', day: 'Måndag', hours: '12:00 - 22:00', isOpen: true },
-    { id: '2', day: 'Tisdag', hours: '12:00 - 22:00', isOpen: true },
-    { id: '3', day: 'Onsdag', hours: '12:00 - 22:00', isOpen: true },
-    { id: '4', day: 'Torsdag', hours: '12:00 - 22:00', isOpen: true },
-    { id: '5', day: 'Fredag', hours: '12:00 - 01:00', isOpen: true },
-    { id: '6', day: 'Lördag', hours: '10:00 - 01:00', isOpen: true },
-    { id: '7', day: 'Söndag', hours: '10:00 - 22:00', isOpen: true },
-  ];
 
   useEffect(() => {
     async function fetchOpeningHours() {
