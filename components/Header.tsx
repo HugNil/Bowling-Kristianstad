@@ -7,10 +7,12 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-gradient-to-r from-indigo-900 to-purple-900 text-white shadow-lg">
-      <nav className="container mx-auto px-4 py-4">
+    <header
+      className={`text-white sticky top-0 transition-colors duration-300 bg-gradient-to-r from-red-800 to-rose-800 z-50 shadow-lg`}
+    >
+      <nav className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold hover:text-indigo-200 transition-colors">
+          <Link href="/" className="text-3xl font-bold hover:text-gray-300 transition-colors">
             Bowling Kristianstad
           </Link>
           
@@ -31,14 +33,26 @@ export default function Header() {
 
           {/* Desktop navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/" className="hover:text-indigo-200 transition-colors">
+            <Link href="/" className="hover:text-gray-300 text-xl font-medium transition-colors">
               Hem
             </Link>
-            <Link href="/pricing" className="hover:text-indigo-200 transition-colors">
+            <Link href="/pricing" className="hover:text-gray-300 text-xl font-medium transition-colors">
               Priser
             </Link>
-            <Link href="/about" className="hover:text-indigo-200 transition-colors">
+            <Link href="/openinghours" className="hover:text-gray-300 text-xl font-medium transition-colors">
+              Öppettider
+            </Link>
+            <Link href="/about" className="hover:text-gray-300 text-xl font-medium transition-colors">
               Om Oss
+            </Link>
+            <Link href="/birthday" className="hover:text-gray-300 text-xl font-medium transition-colors">
+              Kalas
+            </Link>
+            <Link href="/event" className="hover:text-gray-300 text-xl font-medium transition-colors">
+              Evenemang
+            </Link>
+            <Link href="/results" className="hover:text-gray-300 text-xl font-medium transition-colors">
+              Resultat
             </Link>
           </div>
         </div>
@@ -48,21 +62,21 @@ export default function Header() {
           <div className="md:hidden mt-4 space-y-2">
             <Link 
               href="/" 
-              className="block py-2 hover:text-indigo-200 transition-colors"
+              className="block py-2 hover:text-orange-200 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Hem
             </Link>
             <Link 
               href="/pricing" 
-              className="block py-2 hover:text-indigo-200 transition-colors"
+              className="block py-2 hover:text-orange-200 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Priser
             </Link>
             <Link 
               href="/about" 
-              className="block py-2 hover:text-indigo-200 transition-colors"
+              className="block py-2 hover:text-orange-200 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Om Oss

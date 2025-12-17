@@ -9,45 +9,45 @@ import { Price } from '@/lib/types';
 const fallbackPrices: Price[] = [
   {
     id: '1',
-    name: 'Vardagsbowling',
-    description: 'Måndag - Fredag före 17:00',
-    price: 150,
+    name: 'Förmiddag',
+    description: 'Måndag - Fredag före kl 16.00',
+    price: 180,
     duration: 'per timme'
   },
   {
     id: '2',
-    name: 'Kvällsbowling',
-    description: 'Vardagar efter 17:00',
+    name: 'Eftermiddag',
+    description: 'Måndag - Fredag mellan kl 16.00 - 18.00',
     price: 200,
     duration: 'per timme'
   },
   {
     id: '3',
-    name: 'Helgbowling',
-    description: 'Lördag & Söndag',
-    price: 250,
+    name: 'Kväll',
+    description: 'Måndag - Torsdag efter kl 18.00',
+    price: 240,
     duration: 'per timme'
   },
   {
     id: '4',
-    name: 'Skolbowling',
-    description: 'För skolor och föreningar',
-    price: 120,
+    name: 'Helg',
+    description: 'Lördag - Söndag före kl 18.00',
+    price: 240,
     duration: 'per timme'
   },
   {
     id: '5',
-    name: 'Barnkalas',
-    description: 'Inkluderar bowling, mat och dryck',
-    price: 2500,
-    duration: 'paket för 10 barn'
+    name: 'Helg',
+    description: 'Fredag - Lördag efter kl 18.00',
+    price: 275,
+    duration: 'per timme'
   },
   {
     id: '6',
-    name: 'Företagsevent',
-    description: 'Bowling och mingel för företag',
-    price: 5000,
-    duration: 'paket från'
+    name: 'Skolor',
+    description: 'Vardagar före kl 16.00',
+    price: 140,
+    duration: 'per timme, minst 5 banor för bokning utanför öppettider'
   }
 ];
 
@@ -60,7 +60,7 @@ export default function PricingPage() {
     async function fetchPrices() {
       try {
         // Check if Firebase is configured
-        if (!process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) {
+        if (process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) { // Sätt till ! för att hämta från firestore
           console.log('Firebase not configured, using fallback prices');
           setPrices(fallbackPrices);
           setLoading(false);
@@ -120,11 +120,11 @@ export default function PricingPage() {
           {prices.map((price) => (
             <div 
               key={price.id}
-              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow overflow-hidden"
+              className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow overflow-hidden"
             >
-              <div className="bg-gradient-to-r from-indigo-900 to-purple-900 text-white p-6">
+              <div className="bg-gray-800 text-white p-6">
                 <h3 className="text-2xl font-bold mb-2">{price.name}</h3>
-                <p className="text-indigo-200">{price.description}</p>
+                <p>{price.description}</p>
               </div>
               <div className="p-6">
                 <div className="text-4xl font-bold text-gray-800 mb-2">
@@ -138,14 +138,14 @@ export default function PricingPage() {
           ))}
         </div>
 
-        <div className="mt-16 bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">Boka Nu!</h2>
-          <p className="text-gray-600 mb-6">
-            Ring oss på <strong>044-XXX XX XX</strong> för att boka din bana eller skicka ett mail till{' '}
-            <strong>info@bowlingkristianstad.se</strong>
+        <div className="mt-16 bg-gradient-to-r from-red-800 to-rose-800 rounded-lg shadow-lg p-8 max-w-2xl mx-auto text-white">
+          <h2 className="text-3xl font-bold mb-4">Boka Nu!</h2>
+          <p className="mb-6">
+            Ring oss på <strong>044-12 22 15</strong> för att boka din bana eller skicka ett mail till{' '}
+            <strong>bowlingkristianstad@gmail.com</strong>
           </p>
-          <p className="text-sm text-gray-500">
-            * Priserna kan variera beroende på säsong och tillgänglighet. Skoavgift tillkommer.
+          <p className="text-sm">
+            Skohyra ingår i priset. Vi tar emot Swish och .
           </p>
         </div>
       </div>
