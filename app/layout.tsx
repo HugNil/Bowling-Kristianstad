@@ -89,7 +89,7 @@ export default function RootLayout({
       <body className="antialiased flex flex-col min-h-screen">
         <LanguageProvider>
           <Header />
-          <main className="flex-grow">
+          <main className="grow">
             {children}
           </main>
           <script

@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <header
-      className={`text-white sticky top-0 transition-colors duration-300 bg-linear-to-r from-red-800 to-rose-800 z-50 shadow-lg relative`}
+      className={`text-white sticky top-0 transition-colors duration-300 bg-linear-to-r from-red-800 to-rose-800 z-50 shadow-lg`}
     >
       <nav className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between">
@@ -79,45 +79,54 @@ export default function Header() {
           <div className="md:hidden mt-4 space-y-2">
             <Link 
               href="/" 
-              className="block py-2 hover:text-orange-200 transition-colors"
+              className="block py-2 hover:text-gray-300 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.header.home}
             </Link>
             <Link 
               href="/pricing" 
-              className="block py-2 hover:text-orange-200 transition-colors"
+              className="block py-2 hover:text-gray-300 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.header.pricing}
             </Link>
+            {/*
             <Link 
               href="/about" 
-              className="block py-2 hover:text-orange-200 transition-colors"
+              className="block py-2 hover:text-gray-300 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.header.about}
             </Link>
+            */}
             <Link 
               href="/openinghours" 
-              className="block py-2 hover:text-orange-200 transition-colors"
+              className="block py-2 hover:text-gray-300 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.header.openingHours}
             </Link>
             <Link 
               href="/birthday" 
-              className="block py-2 hover:text-orange-200 transition-colors"
+              className="block py-2 hover:text-gray-300 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.header.birthday}
             </Link>
             <Link 
               href="/event" 
-              className="block py-2 hover:text-orange-200 transition-colors"
+              className="block py-2 hover:text-gray-300 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {t.header.event}
+            </Link>
+            <Link 
+              href="/results" 
+              className="block py-2 hover:text-gray-300 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t.header.results}
             </Link>
           </div>
         )}

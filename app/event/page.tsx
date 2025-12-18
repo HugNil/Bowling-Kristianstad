@@ -144,7 +144,10 @@ export default function AboutPage() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-3">{contact.contactTitle}</h3>
-                <p className="whitespace-pre-line">{`${contact.phoneLabel}: ${contact.phone}\n${contact.emailLabel}: ${contact.email}`}</p>
+                <p>
+                  <div>{contact.phoneLabel}: <a href={`tel:${contact.phone}`} className="underline hover:no-underline">{contact.phone}</a></div>
+                  <div>{contact.emailLabel}: <a href={`mailto:${contact.email}`} className="underline hover:no-underline">{contact.email}</a></div>
+                </p>
               </div>
             </div>
           </div>

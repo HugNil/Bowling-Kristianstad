@@ -66,7 +66,11 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Bowling Kristianstad | <Link href="https://hugonilsson.vercel.app/" className="hover:text-white font-medium transition-colors">Hugo Nilsson</Link></p>
+          <p>&copy; {new Date().getFullYear()} 
+            <Link href="/" className="hover:text-white transition-colors"> Bowling Kristianstad</Link>. 
+            All rights reserved | 
+            <Link href="https://hugonilsson.vercel.app/"target="_blank"rel="noopener noreferrer"className="hover:text-white transition-colors"> Hugo Nilsson </Link>
+          </p>
         </div>
       </div>
     </footer>

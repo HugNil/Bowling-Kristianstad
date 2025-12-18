@@ -6,7 +6,7 @@ import { getPricing } from '@/lib/pricingData';
 
 export default function PricingPage() {
   const { lang } = useLanguage();
-  const { pricing, contact } = getStrings(lang);
+  const { pricing, contact, openingHours: openingText } = getStrings(lang);
   const prices = getPricing(lang);
 
   return (
@@ -42,13 +42,13 @@ export default function PricingPage() {
         </div>
 
         <div className="mt-16 bg-linear-to-r from-red-800 to-rose-800 rounded-lg shadow-lg p-8 max-w-4xl mx-auto text-white">
-          <h2 className="text-3xl font-bold mb-4">{pricing.bookTitle}</h2>
-          <p className="mb-6">
-            {pricing.bookBody} Ring oss på <strong>{contact.phone}</strong> eller maila <strong>{contact.email}</strong>.
-          </p>
-          <p className="text-sm">{pricing.bookNote}</p>
+            <h2 className="text-3xl font-bold mb-4">{openingText.bookTitle}</h2>
+            <p className="mb-6">
+              {openingText.bookBody}<br/> {openingText.body1} <strong><a href={`tel:${contact.phone}`}>{contact.phone}</a></strong> {openingText.body2} <strong><a href={`mailto:${contact.email}`}>{contact.email}</a></strong>.
+            </p>
+            <p className="text-sm">{openingText.bookNote}</p>
+          </div>
         </div>
-      </div>
     </div>
   );
 }
