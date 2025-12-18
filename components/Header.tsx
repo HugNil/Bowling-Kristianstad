@@ -57,9 +57,11 @@ export default function Header() {
             <Link href="/openinghours" className="hover:text-gray-300 text-xl font-medium transition-colors">
               {t.header.openingHours}
             </Link>
+            {/*
             <Link href="/about" className="hover:text-gray-300 text-xl font-medium transition-colors">
               {t.header.about}
             </Link>
+            */}
             <Link href="/birthday" className="hover:text-gray-300 text-xl font-medium transition-colors">
               {t.header.birthday}
             </Link>

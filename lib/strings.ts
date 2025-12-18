@@ -18,12 +18,12 @@ export const stringsSv = {
   contact: {
     heading: "Kontakta Oss",
     addressTitle: "Besöksadress",
-    addressLines: ["Bowlinggatan 1", "291 54 Kristianstad"],
+    addressLines: ["Karlavägen 2", "291 54 Kristianstad"],
     contactTitle: "Kontaktuppgifter",
     phoneLabel: "Telefon",
     phone: "044-12 22 15",
     emailLabel: "E-post",
-    email: "bowlingkristianstad@gmail.com",
+    email: "bowlingkristianstad@hotmail.se",
   },
 
   // Home page
@@ -74,15 +74,19 @@ export const stringsSv = {
   openingHours: {
     heroTitle: "Våra Öppettider",
     heroSubtitle: "Här hittar du våra aktuella öppettider för Bowling Kristianstad. Välkommen in för en rolig stund!",
+    secondaryTitle: "Öppettider",
     infoTitle: "Bra att veta!",
     infoParagraphs: [
       "Vi förbehåller oss rätten att ändra öppettider vid helgdagar och speciella evenemang vid låg beläggning. Kontakta oss gärna för att få den senaste informationen.",
-      "Max antal spelare per bana är <strong>5</strong> personer för att garantera en bra spelupplevelse för alla. Övriga personer i sällskapet är välkomna att kolla på utanför banområdet.",
+      "Max <strong>5</strong> personer per bana för att garantera en bra spelupplevelse för alla. Övriga personer i sällskapet är välkomna att kolla på utanför banområdet.",
       "Vi har discobowling varje fredag från kl. 18:00 och lördagar/söndagar från kl. 14:00 tills stängning. Under discobowlingen är det hög musik och blinkande lampor, vilket kan påverka spelupplevelsen.",
+      "1 timme består av 57 minuter speltid.",
       "Kom ihåg att boka din bana i förväg, särskilt under helger och lov, för att säkerställa att ni får plats när ni vill spela.",
     ],
     bookTitle: "Boka Nu!",
     bookBody: "Ring oss för att boka din bana eller skicka ett mail så hjälper vi dig.",
+    body1: "Ring oss på",
+    body2: "eller maila oss",
     bookNote: "Skohyra ingår i priset. Vi tar emot Swish och Kontant.",
   },
 
@@ -126,12 +130,12 @@ export const stringsEn = {
   contact: {
     heading: "Contact Us",
     addressTitle: "Address",
-    addressLines: ["Bowlinggatan 1", "291 54 Kristianstad"],
+    addressLines: ["Karlavägen 2", "291 54 Kristianstad"],
     contactTitle: "Contact Info",
     phoneLabel: "Phone",
     phone: "044-12 22 15",
     emailLabel: "Email",
-    email: "bowlingkristianstad@gmail.com",
+    email: "bowlingkristianstad@hotmail.se",
   },
 
   // Home page
@@ -182,15 +186,19 @@ export const stringsEn = {
   openingHours: {
     heroTitle: "Our Opening Hours",
     heroSubtitle: "Find our current opening hours for Bowling Kristianstad. Welcome in for a fun time!",
+    secondaryTitle: "Opening Hours",
     infoTitle: "Good to Know!",
     infoParagraphs: [
       "We reserve the right to change opening hours during holidays and special events with low occupancy. Feel free to contact us for the latest information.",
       "Maximum <strong>5</strong> players per lane to guarantee a good bowling experience for everyone. Other people in your group are welcome to watch from outside of the lane area.",
       "We have disco bowling every Friday from 6 PM and Saturdays/Sundays from 2 PM until closing. During disco bowling, there is loud music and flashing lights, which may affect the bowling experience.",
+      "1 hour consists of 57 minutes of playtime.",
       "Remember to book your lane in advance, especially during weekends and holidays, to ensure you get a spot when you want to play.",
     ],
     bookTitle: "Book Now!",
     bookBody: "Call us to book your lane or send an email and we'll help you.",
+    body1: "Call us at",
+    body2: "or email us",
     bookNote: "Shoe rental is included in the price. We accept Swish and Cash.",
   },
 

@@ -33,7 +33,7 @@ export default function AboutPage() {
           {/* Opening Hours */}
           <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
             <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">
-              Öppettider
+              {openingText.secondaryTitle}
             </h2>
             <div className="space-y-3">
               {openingHours.map((hours: HoursData) => (
@@ -74,7 +74,7 @@ export default function AboutPage() {
           <div className="mt-16 bg-linear-to-r from-red-800 to-rose-800 rounded-lg shadow-lg p-8 max-w-4xl mx-auto text-white">
             <h2 className="text-3xl font-bold mb-4">{openingText.bookTitle}</h2>
             <p className="mb-6">
-              {openingText.bookBody} Ring oss på <strong>{contact.phone}</strong> eller maila <strong>{contact.email}</strong>.
+              {openingText.bookBody}<br/> {openingText.body1} <strong><a href={`tel:${contact.phone}`}>{contact.phone}</a></strong> {openingText.body2} <strong><a href={`mailto:${contact.email}`}>{contact.email}</a></strong>.
             </p>
             <p className="text-sm">{openingText.bookNote}</p>
           </div>

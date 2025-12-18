@@ -17,16 +17,16 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4">Bowling Kristianstad</h3>
             <p className="text-gray-400">
               {lang === 'sv' 
-                ? 'Din bowlinghall i Kristianstad för en rolig och spännande upplevelse!'
-                : 'Your bowling hall in Kristianstad for a fun and exciting experience!'}
+                ? <>Din bowlinghall i Kristianstad för en<br />rolig och spännande upplevelse!</>
+                : <>Your bowling alley in Kristianstad for<br />a fun and exciting experience!</>}
             </p>
           </div>
           
           <div>
             <h3 className="text-xl font-bold mb-4">{lang === 'sv' ? 'Kontakt' : 'Contact'}</h3>
             <p className="text-gray-400">
-              {lang === 'sv' ? 'Telefon' : 'Phone'}: {contact.phone}<br />
-              {lang === 'sv' ? 'E-post' : 'Email'}: {contact.email}<br />
+              {lang === 'sv' ? 'Telefon' : 'Phone'}: <a href={`tel:${contact.phone}`} className="underline">{contact.phone}</a><br />
+              {lang === 'sv' ? 'E-post' : 'Email'}: <a href={`mailto:${contact.email}`} className="underline">{contact.email}</a><br />
               {lang === 'sv' ? 'Adress' : 'Address'}: {contact.addressLines.join(', ')}
             </p>
           </div>
@@ -42,11 +42,13 @@ export default function Footer() {
                   <Link href="/pricing" className="hover:text-white font-medium transition-colors">{lang === 'sv' ? 'Priser' : 'Pricing'}</Link>
                 </li>
                 <li>
-                  <Link href="/openinghours" className="hover:text-white font-medium transition-colors">{lang === 'sv' ? 'Öppettider' : 'Hours'}</Link>
+                  <Link href="/openinghours" className="hover:text-white font-medium transition-colors">{lang === 'sv' ? 'Öppettider' : 'Opening Hours'}</Link>
                 </li>
+                {/*
                 <li>
                   <Link href="/about" className="hover:text-white font-medium transition-colors">{lang === 'sv' ? 'Om Oss' : 'About'}</Link>
                 </li>
+                */}
               </ul>
               <ul className="space-y-2 text-gray-400">
                 <li>
@@ -64,7 +66,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Bowling Kristianstad. {lang === 'sv' ? 'Alla rättigheter förbehållna.' : 'All rights reserved.'}</p>
+          <p>&copy; {new Date().getFullYear()} Bowling Kristianstad | <Link href="https://hugonilsson.vercel.app/" className="hover:text-white font-medium transition-colors">Hugo Nilsson</Link></p>
         </div>
       </div>
     </footer>
