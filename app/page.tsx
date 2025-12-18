@@ -1,11 +1,19 @@
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
+import { getStrings } from "@/lib/strings";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const HERO_IMAGE_URL = "https://www.bowlingkristianstad.se/wp-content/uploads/2017/12/shutterstock_420254671.jpg";
 
 export default function Home() {
+  const { lang } = useLanguage();
+  const t = getStrings(lang);
+  const { home } = t;
+
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white">
+    <div className="bg-linear-to-b from-gray-50 to-white">
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-96px)] flex items-center justify-center text-white">
         <div className="absolute inset-0">
@@ -16,27 +24,27 @@ export default function Home() {
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-black/40" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/50 to-black/40" />
         </div>
         <div className="relative z-10 text-center px-4">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Välkommen till Bowling Kristianstad
+            {home.heroTitle}
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-            Upplev den bästa bowlingen i Kristianstad med moderna banor och fantastisk atmosfär
+            {home.heroSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/pricing"
               className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-400 transition-colors"
             >
-              Se Priser
+              {home.heroPrimaryCta}
             </Link>
             <Link
               href="/about"
               className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-colors"
             >
-              Om Oss
+              {home.heroSecondaryCta}
             </Link>
           </div>
         </div>
@@ -46,47 +54,49 @@ export default function Home() {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-            Varför Välja Oss?
+            {home.featuresTitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
-              <div className="text-5xl mb-4">🎳</div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Hög kvalitet</h3>
-              <p className="text-gray-600">
-                Våra bowlingbanor är noggrant underhållna för att ge dig en spelupplevelse i toppklass.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
-              <div className="text-5xl mb-4">👨‍👩‍👧‍👦</div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Familjevänligt</h3>
-              <p className="text-gray-600">
-                Perfekt för hela familjen! Vi har bowling för alla åldrar och erfarenhetsnivåer.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
-              <div className="text-5xl mb-4">🍕</div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Mat & Dryck</h3>
-              <p className="text-gray-600">
-                Vid bokade evenemang erbjuder vi mat och dryck enligt överenskommelse.
-              </p>
-            </div>
+            {home.features.map((feature) => (
+              <div key={feature.title} className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+                <div className="text-5xl mb-4">{feature.icon}</div>
+                <h3 className="text-2xl font-semibold mb-4 text-gray-800">{feature.title}</h3>
+                <p className="text-gray-600">{feature.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="relative bg-gradient-to-r from-red-800 to-rose-800 text-white py-20 px-4">
+      <section className="relative bg-linear-to-r from-red-800 to-rose-800 text-white py-20 px-4">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Redo att Börja Bowla?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Boka din bana idag och upplev den bästa bowlingen i Kristianstad!
-          </p>
+          <h2 className="text-4xl font-bold mb-6">{home.ctaTitle}</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">{home.ctaBody}</p>
           <Link
             href="/pricing"
             className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-400 transition-colors inline-block"
           >
-            Se Våra Priser
+            {home.ctaButton}
           </Link>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section id="hitta-hit" className="pt-16 bg-linear-to-r from-red-800 to-rose-800 text-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-8">{home.mapHeading}</h2>
+        </div>
+        <div className="w-full">
+          <iframe
+            title="Karta till Bowling Kristianstad"
+            src="https://www.google.com/maps?q=56.0234928,14.1632581&z=17&hl=sv&output=embed"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
     </div>

@@ -5,6 +5,8 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { OpeningHours } from '@/lib/types';
 import { CldImage } from 'next-cloudinary';
+import { getStrings } from '@/lib/strings';
+import { useLanguage } from '@/lib/LanguageContext';
 
 // Fallback opening hours if Firestore is not configured
 const fallbackHours: OpeningHours[] = [
@@ -18,6 +20,8 @@ const fallbackHours: OpeningHours[] = [
 ];
 
 export default function AboutPage() {
+  const { lang } = useLanguage();
+  const { birthday, contact } = getStrings(lang);
   const [openingHours, setOpeningHours] = useState<OpeningHours[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -59,13 +63,13 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white">
+    <div className="bg-linear-to-r from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-indigo-900 to-purple-900 text-white py-20 px-4">
+      <section className="bg-linear-to-r from-indigo-900 to-purple-900 text-white py-20 px-4">
         <div className="container mx-auto text-center">
-          <h1 className="text-5xl font-bold mb-6">Om Bowling Kristianstad</h1>
+          <h1 className="text-5xl font-bold mb-6">{birthday.heroTitle}</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Din favoritbowlinghall i hjärtat av Kristianstad
+            {birthday.heroSubtitle}
           </p>
         </div>
       </section>
@@ -98,7 +102,7 @@ export default function AboutPage() {
               />
             </div>
           ) : (
-            <div className="mb-12 bg-gradient-to-r from-indigo-900 to-purple-900 rounded-lg overflow-hidden shadow-lg h-96 flex items-center justify-center">
+            <div className="mb-12 bg-linear-to-r from-indigo-900 to-purple-900 rounded-lg overflow-hidden shadow-lg h-96 flex items-center justify-center">
               <div className="text-white text-center">
                 <div className="text-6xl mb-4">🎳</div>
                 <p className="text-xl">Moderna Bowlingbanor</p>
@@ -131,19 +135,16 @@ export default function AboutPage() {
           </div>
 
           {/* Contact Information */}
-          <div className="mt-12 bg-gradient-to-r from-indigo-900 to-purple-900 text-white rounded-lg shadow-lg p-8">
-            <h2 className="text-3xl font-bold mb-6 text-center">Kontakta Oss</h2>
+          <div className="mt-12 bg-linear-to-r from-indigo-900 to-purple-900 text-white rounded-lg shadow-lg p-8">
+            <h2 className="text-3xl font-bold mb-6 text-center">{contact.heading}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold mb-3">Besöksadress</h3>
-                <p>Bowlinggatan 1<br />291 XX Kristianstad</p>
+                <h3 className="text-xl font-semibold mb-3">{contact.addressTitle}</h3>
+                <p className="whitespace-pre-line">{contact.addressLines.join("\n")}</p>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-3">Kontaktuppgifter</h3>
-                <p>
-                  Telefon: 044-XXX XX XX<br />
-                  E-post: info@bowlingkristianstad.se
-                </p>
+                <h3 className="text-xl font-semibold mb-3">{contact.contactTitle}</h3>
+                <p className="whitespace-pre-line">{`${contact.phoneLabel}: ${contact.phone}\n${contact.emailLabel}: ${contact.email}`}</p>
               </div>
             </div>
           </div>
