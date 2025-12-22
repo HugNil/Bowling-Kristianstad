@@ -5,8 +5,6 @@ A modern bowling alley website built with Next.js, TypeScript, Tailwind CSS, Fir
 ## Features
 
 - 🎳 Modern, responsive design with Tailwind CSS
-- 🔥 Firebase Firestore integration for dynamic pricing and opening hours
-- 🖼️ Cloudinary support for image management (with fallback to local images)
 - 📱 Mobile-friendly navigation
 - ⚡ Built with Next.js 15 and TypeScript for optimal performance
 
