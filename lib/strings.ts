@@ -1,3 +1,5 @@
+export type Locale = "sv" | "en";
+
 export const stringsSv = {
   site: {
     name: "Bowling Kristianstad",
@@ -9,9 +11,9 @@ export const stringsSv = {
     pricing: "Priser",
     openingHours: "Öppettider",
     about: "Om Oss",
-    birthday: "Kalas",
-    event: "Evenemang",
-    results: "Resultat",
+    birthday: "Kalas & Party",
+    event: "Fest & Mat",
+    results: "Resultat & Föreningar",
   },
 
   // Contact information
@@ -101,6 +103,16 @@ export const stringsSv = {
   event: {
     heroTitle: "Event & Företagsevent",
     heroSubtitle: "Boka företagsevent, kick-off eller kompisgäng hos Bowling Kristianstad nära Kristianstad Arena.",
+    introTitle: "Bowling och mat, fest i allmänhet till otroligt låga priser",
+    introParagraph1: "Företag, privat eller förening? Spelar ingen roll. Vi har möjlighet att erbjuda bowling och mat till otroligt låga priser. Vi har fullständiga rättigheter för slutna sällskap (för mer information ring: ",
+    introParagraph1Link: "). Önskas lugn och ro har Ni möjlighet att boka hela hallen för privat fest under 3 eller 4 timmar.",
+    introParagraph2: "Bowling & mat och varför inte en extratävling, vi kör gärna en musikquiz för er utan extra kostnad.",
+    tailorText: "Vi skräddarsyr er fest.",
+    arrangementText: "För att vi skall kunna arrangera Er fest så bra som möjligt...",
+    contactText: "ring oss för mer information och bokning",
+    priceTitle: "Pris: hela bowlinghallen för er själva.",
+    priceBowlingTime: "(1 timmes bowligtid)",
+    menuTitle: "Menyalternativ",
   },
   birthday: {
     heroTitle: "Bowlingkalas",
@@ -146,6 +158,16 @@ export const stringsSv = {
       bookingCTA2: "kolla lediga datum!",
     },
   },
+
+  // Results page
+  results: {
+    title: "Resultat & Föreningar",
+    subtitle: "Håll koll på dina bowlingresultat och våra föreningar",
+    associationsTitle: "Våra Föreningar",
+    associationsDescription: "Hos Bowling Kristianstad har vi flera aktiva bowlingföreningar som välkomnar nya medlemmar:",
+    externalLinksTitle: "Externa Länkar",
+    externalLinksDescription: "Kolla in resultat och information från våra partners:",
+  },
 };
 
 
@@ -161,9 +183,9 @@ export const stringsEn = {
     pricing: "Pricing",
     openingHours: "Opening Hours",
     about: "About Us",
-    birthday: "Birthday",
-    event: "Events",
-    results: "Results",
+    birthday: "Birthday & Party",
+    event: "Party & Food",
+    results: "Results & Clubs",
   },
 
   // Contact information
@@ -253,6 +275,16 @@ export const stringsEn = {
   event: {
     heroTitle: "Events & Corporate Events",
     heroSubtitle: "Book corporate events, kick-offs, or group gatherings at Bowling Kristianstad near Kristianstad Arena.",
+    introTitle: "Bowling and food, parties at incredibly low prices",
+    introParagraph1: "Company, private or association? It does not matter. We have the ability to offer bowling and food at incredibly low prices. We have complete rights for closed gatherings (for more information call: ",
+    introParagraph1Link: "). If you wish peace and quiet, you have the opportunity to book the entire hall for a private party for 3 or 4 hours.",
+    introParagraph2: "Bowling & food and why not an extra bowling, we happily run a music quiz for you at no extra cost.",
+    tailorText: "We tailor your party.",
+    arrangementText: "For us to arrange your party as well as possible...",
+    contactText: "call us for more information and booking",
+    priceTitle: "Price: entire bowling alley for you.",
+    priceBowlingTime: "(1 hour bowling time)",
+    menuTitle: "Menu Options",
   },
   birthday: {
     heroTitle: "Bowling Party",
@@ -298,10 +330,20 @@ export const stringsEn = {
       bookingCTA2: "check available dates!",
     },
   },
+
+  // Results page
+  results: {
+    title: "Results & Associations",
+    subtitle: "Keep track of your bowling results and our associations",
+    associationsTitle: "Our Associations",
+    associationsDescription: "At Bowling Kristianstad we have several active bowling associations that welcome new members:",
+    externalLinksTitle: "External Links",
+    externalLinksDescription: "Check out results and information from our partners:",
+  },
 };
 
 export const strings = stringsSv;
 
-export function getStrings(lang: "sv" | "en") {
+export function getStrings(lang: Locale) {
   return lang === "en" ? stringsEn : stringsSv;
 }

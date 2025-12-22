@@ -27,6 +27,7 @@ export interface MenuItem {
   price: number; // price in SEK
   unit?: string; // e.g. "kr/barn"
   note?: string; // optional note like weight
+  description?: string; // optional description of menu items
 }
 
 export interface ExtraItem {

@@ -13,7 +13,7 @@ export default function AboutPage() {
   return (
     <div className="bg-linear-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="relative overflow-hidden text-white min-h-[40vh] md:min-h-[40vh]">
+      <section className="relative overflow-hidden text-white min-h-[40vh] md:min-h-[40vh]" aria-label="Om oss hero">
         <Image
           src={HERO_IMAGE_URL}
           alt="Bowling Kristianstad"
@@ -29,20 +29,20 @@ export default function AboutPage() {
       </section>
 
       {/* About Content */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4" aria-label="Om Bowling Kristianstad">
         <div className="container mx-auto max-w-4xl">
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
+          <article className="bg-white rounded-lg shadow-lg p-8 mb-12" aria-label="Historia">
             <h2 className="text-3xl font-bold mb-6 text-gray-800">{about.historyTitle}</h2>
             {about.historyParagraphs.map((paragraph) => (
               <p key={paragraph} className="text-gray-600 mb-4 last:mb-0">
                 {paragraph}
               </p>
             ))}
-          </div>
+          </article>
 
           {/* Image section with Cloudinary fallback */}
           {process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ? (
-            <div className="rounded-lg overflow-hidden shadow-lg">
+            <figure className="rounded-lg overflow-hidden shadow-lg" aria-label="Interiörbild">
               <CloudinaryImage
                 width="960"
                 height="600"
@@ -50,7 +50,7 @@ export default function AboutPage() {
                 alt="Bowling Kristianstad interior"
                 className="w-full h-auto"
               />
-            </div>
+            </figure>
           ) : (
             <div className="mb-12 bg-linear-to-r from-indigo-900 to-purple-900 rounded-lg overflow-hidden shadow-lg h-96 flex items-center justify-center">
               <div className="text-white text-center">

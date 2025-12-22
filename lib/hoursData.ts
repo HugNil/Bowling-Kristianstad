@@ -1,15 +1,15 @@
-// Lista med datum när vi är stängda (format: YYYY-MM-DD)
-const closedDates = [
-  // Specific holidays (YYYY-MM-DD format)
+// Stängda datum (separerade i kategorier för enkel redigering)
+const FIXED_HOLIDAYS = [
   '04-18', // Långfredagen
   '04-20', // Påskdagen
   '04-21', // Annandag påsk
   '05-29', // Kristi himmelsfärdsdag
   '06-20', // Midsommarafton
   '06-21', // Midsommardagen
+];
 
-
-  // Usual holidays (MM-DD format)
+const RECURRING_HOLIDAYS = [
+  '12-23', // Lilljulafton
   '12-24', // Julafton
   '12-25', // Juldagen
   '12-26', // Annandag jul
@@ -18,82 +18,16 @@ const closedDates = [
   '01-06', // Trettondagen
   '05-01', // Första maj
   '06-06', // Nationaldagen
-  '12-24', // Julafton
-  '12-25', // Juldagen
-  '12-26', // Annandag jul
-  '12-31', // Nyårsafton
-  '01-01', // Nyårsdagen
-
-
-  // Summer dates (MM-DD format)
-  '6-6',
-  '6-7',
-  '6-8',
-  '6-9',
-  '6-10',
-  '6-11',
-  '6-12',
-  '6-13',
-  '6-14',
-  '6-15',
-  '6-16',
-  '6-17',
-  '6-18',
-  '6-19',
-  '6-20',
-  '6-21',
-  '6-22',
-  '6-23',
-  '6-24',
-  '6-25',
-  '6-26',
-  '6-27',
-  '6-28',
-  '6-29',
-  '6-30',
-  '7-1',
-  '7-2',
-  '7-3',
-  '7-4',
-  '7-5',
-  '7-6',
-  '7-7',
-  '7-8',
-  '7-9',
-  '7-10',
-  '7-11',
-  '7-12',
-  '7-13',
-  '7-14',
-  '7-15',
-  '7-16',
-  '7-17',
-  '7-18',
-  '7-19',
-  '7-20',
-  '7-21',
-  '7-22',
-  '7-23',
-  '7-24',
-  '7-25',
-  '7-26',
-  '7-27',
-  '7-28',
-  '7-29',
-  '7-30',
-  '7-31',
-  '8-1',
-  '8-2',
-  '8-3',
-  '8-4',
-  '8-5',
-  '8-6',
-  '8-7',
-  '8-8',
-  '8-9',
-  '8-10',
-  '8-11',
 ];
+
+const SUMMER_BREAK = [
+  '6-6','6-7','6-8','6-9','6-10','6-11','6-12','6-13','6-14','6-15','6-16','6-17','6-18','6-19','6-20','6-21','6-22','6-23','6-24','6-25','6-26','6-27','6-28','6-29','6-30',
+  '7-1','7-2','7-3','7-4','7-5','7-6','7-7','7-8','7-9','7-10','7-11','7-12','7-13','7-14','7-15','7-16','7-17','7-18','7-19','7-20','7-21','7-22','7-23','7-24','7-25','7-26','7-27','7-28','7-29','7-30','7-31',
+  '8-1','8-2','8-3','8-4','8-5','8-6','8-7','8-8','8-9','8-10','8-11',
+];
+
+// Samlad lista utan duplicat
+const closedDates = Array.from(new Set([...FIXED_HOLIDAYS, ...RECURRING_HOLIDAYS, ...SUMMER_BREAK]));
 
 export const hoursData = {
   sv: [

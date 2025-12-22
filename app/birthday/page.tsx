@@ -5,30 +5,6 @@ import { getStrings } from '@/lib/strings';
 import { useLanguage } from '@/lib/LanguageContext';
 import { getBirthdayMenus, getBirthdayExtras } from '@/lib/eventsData';
 
-function MenuCard({ name, price, unit }: { name: string; price: number; unit?: string }) {
-  return (
-    <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow overflow-hidden">
-      <div className="bg-gray-800 text-white p-6">
-        <h3 className="text-2xl font-bold mb-0">{name}</h3>
-      </div>
-      <div className="p-6">
-        <div className="text-4xl font-bold text-gray-800 mb-2">
-          {price} kr
-        </div>
-        {unit && <div className="text-gray-600">{unit}</div>}
-      </div>
-    </div>
-  );
-}
-
-function ExtraBadge({ label }: { label: string }) {
-  return (
-    <span className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 text-gray-700 border border-gray-200 text-sm">
-      {label}
-    </span>
-  );
-}
-
 export default function BirthdayPage() {
   interface CardData { title: string; body?: string; footerLines?: string[] }
   const { lang } = useLanguage();
@@ -65,58 +41,140 @@ export default function BirthdayPage() {
 
   return (
     <div className="bg-linear-to-r from-gray-50 to-white">
-      {/* Hero */}
-      <section className="bg-linear-to-r from-indigo-900 to-purple-900 text-white py-20 px-4">
-        <div className="container mx-auto text-center">
+      {/* Hero with Background Image */}
+      <section
+        aria-label="Barnkalas hero"
+        style={{
+          backgroundImage: `url('/gemini_birthday.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        className="text-white min-h-[40vh] md:min-h-[40vh] px-4 relative flex flex-col items-center justify-center"
+      >
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        
+        <div className="container mx-auto text-center relative z-10">
           <h1 className="text-5xl font-bold mb-6">{birthday.heroTitle}</h1>
           <p className="text-xl max-w-3xl mx-auto">{birthday.heroSubtitle}</p>
         </div>
       </section>
 
+
       {/* Intro */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-5xl">
+      <section className="py-16 px-4" aria-label="Barnkalas intro">
+        <div className="container mx-auto max-w-6xl">
           <h2 className="text-4xl font-extrabold tracking-tight mb-6">{birthday.introTitle}</h2>
           <div className="text-gray-700 text-lg">
-            {<p>{birthday.introParagraph1}</p>}
-            {<p>{birthday.introParagraph2}</p>}
+            <p>{birthday.introParagraph1}</p>
+            <p>{birthday.introParagraph2}</p>
           </div>
         </div>
       </section>
 
       {/* Info cards */}
-      <section className="px-4 pb-8">
+      <section className="px-4 pb-8" aria-label="Barnkalas kort">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Personal Card */}
             {birthday.cardsLeft?.map((card: CardData, idx: number) => (
-              <div key={idx} className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow p-6 h-full">
-                <div className="flex gap-4">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">{card.title}</h3>
-                    {card.body && <p className="text-gray-700">{card.body}</p>}
-                  </div>
-                </div>
+              <div key={idx} className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow p-6">
+                <h3 className="text-2xl font-bold mb-2">{card.title}</h3>
+                {card.body && <p className="text-gray-700">{card.body}</p>}
               </div>
             ))}
 
             {/* Time Card */}
             {birthday.cardsRight?.map((card: CardData, idx: number) => (
-              <div key={idx} className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow p-6 h-full">
-                <div className="flex gap-4">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">{card.title}</h3>
-                    {card.body && <p className="text-gray-700">{card.body}</p>}
-                  </div>
-                </div>
+              <div key={idx} className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow p-6">
+                <h3 className="text-2xl font-bold mb-2">{card.title}</h3>
+                {card.body && <p className="text-gray-700">{card.body}</p>}
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Menu & Info Section */}
+      <section className="px-4 py-16" aria-label="Barnkalas information och meny">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Left: Info Section */}
+            <article className="flex flex-col justify-center" aria-label="Vad som ingår">
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">{birthday.includesTitle}</h2>
+              
+              <div>
+                <ul className="space-y-3 text-gray-700">
+                  {birthday.includesList?.map((item: string, idx: number) => (
+                    <li key={idx} className="flex gap-3">
+                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-500 text-white text-sm shrink-0 mt-1">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+
+            {/* Right: Menu */}
+            <article className="relative bg-white rounded-lg p-8 shadow-lg overflow-hidden" style={{ fontFamily: "'Playfair Display', serif" }} aria-label="Barnkalas meny">
+              {/* Decorative corner ornaments */}
+              <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-red-600 rounded-tl-lg"></div>
+              <div className="absolute top-1 left-1 w-10 h-10 opacity-20">
+                <svg viewBox="0 0 100 100" className="text-red-600 fill-current">
+                  <path d="M10,10 Q30,5 50,10 T90,10 M10,10 Q5,30 10,50 T10,90" stroke="currentColor" strokeWidth="2" fill="none"/>
+                </svg>
+              </div>
+              
+              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-red-600 rounded-tr-lg"></div>
+              <div className="absolute top-1 right-1 w-10 h-10 opacity-20 transform scale-x-[-1]">
+                <svg viewBox="0 0 100 100" className="text-red-600 fill-current">
+                  <path d="M10,10 Q30,5 50,10 T90,10 M10,10 Q5,30 10,50 T10,90" stroke="currentColor" strokeWidth="2" fill="none"/>
+                </svg>
+              </div>
+              
+              <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-red-600 rounded-bl-lg"></div>
+              <div className="absolute bottom-1 left-1 w-10 h-10 opacity-20 transform scale-y-[-1]">
+                <svg viewBox="0 0 100 100" className="text-red-600 fill-current">
+                  <path d="M10,10 Q30,5 50,10 T90,10 M10,10 Q5,30 10,50 T10,90" stroke="currentColor" strokeWidth="2" fill="none"/>
+                </svg>
+              </div>
+              
+              <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-red-600 rounded-br-lg"></div>
+              <div className="absolute bottom-1 right-1 w-10 h-10 opacity-20 transform scale-[-1]">
+                <svg viewBox="0 0 100 100" className="text-red-600 fill-current">
+                  <path d="M10,10 Q30,5 50,10 T90,10 M10,10 Q5,30 10,50 T10,90" stroke="currentColor" strokeWidth="2" fill="none"/>
+                </svg>
+              </div>
+              
+              <div className="relative z-10">
+                <h3 className="text-3xl font-bold mb-8 text-center text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  {lang === 'sv' ? 'Menyalternativ' : 'Menu Options'}
+                </h3>
+                
+                <div className="space-y-6">
+                  {menus.map((item) => (
+                    <div key={item.id} className="pb-6 border-b border-gray-200 last:border-b-0">
+                      <div className="flex items-start gap-3 mb-2">
+                        <span className="text-red-600 text-2xl font-bold">✦</span>
+                        <div className="flex-1">
+                          <h4 className="text-2xl font-bold text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>{item.name}</h4>
+                        </div>
+                      </div>
+                      <p className="text-gray-700 ml-7 text-base font-semibold mt-2">
+                        {item.price}kr, {item.unit}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       {/* Planning & Setup */}
-      <section className="px-4 pb-12">
+      <section className="px-4 pb-16" aria-label="Så går kalaset till">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl font-bold mb-8 text-center">{lang === 'sv' ? 'Så går kalaset till' : 'How the party works'}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -135,47 +193,8 @@ export default function BirthdayPage() {
         </div>
       </section>
 
-      {/* Packages */}
-      <section className="px-4 pb-8">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-6">{lang === 'sv' ? 'Paketerbjudanden' : 'Package Deals'}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {menus.map(m => (
-              <MenuCard key={m.id} name={m.name} price={m.price} unit={m.unit} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Add-ons */}
-      <section className="px-4 pb-12">
-        <div className="container mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold mb-6">{lang === 'sv' ? 'Tillval' : 'Add-ons'}</h2>
-          <div className="flex flex-wrap gap-3">
-            {extras.map(e => (
-              <ExtraBadge key={e.id} label={`${e.name} ${e.price > 0 ? `+${e.price} ${e.unit ?? 'kr'}` : '+0kr'}`} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Included */}
-      <section className="px-4 pb-20">
-        <div className="container mx-auto max-w-5xl bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-3xl font-bold mb-6">{birthday.includesTitle}</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-gray-700">
-            {birthday.includesList?.map((item: string, idx: number) => (
-              <li key={idx} className="flex gap-3">
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-500 text-white text-sm shrink-0">✓</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* Contact */}
-      <section className="px-4 pb-16">
+      <section className="px-4" aria-label="Beräkna pris">
         <div className="container mx-auto max-w-5xl bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-3xl font-bold mb-8">{birthday.calculator.title}</h2>
           
@@ -291,6 +310,19 @@ export default function BirthdayPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-16" aria-label="Boka barnkalas">
+        <div className="max-w-6xl mx-auto px-4">
+          <aside className="bg-linear-to-r from-red-800 to-rose-800 rounded-lg shadow-lg p-8 max-w-4xl mx-auto text-white">
+            <h2 className="text-3xl font-bold mb-4">{getStrings(lang).openingHours.bookTitle}</h2>
+            <p className="mb-6">
+              {getStrings(lang).openingHours.bookBody}<br/> {getStrings(lang).openingHours.body1} <strong><a href={`tel:${contact.phone}`}>{contact.phone}</a></strong> {getStrings(lang).openingHours.body2} <strong><a href={`mailto:${contact.email}`}>{contact.email}</a></strong>.
+            </p>
+            <p className="text-sm">{getStrings(lang).openingHours.bookNote}</p>
+          </aside>
         </div>
       </section>
     </div>

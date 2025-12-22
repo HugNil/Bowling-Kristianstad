@@ -26,6 +26,13 @@ const jsonLd = {
     addressLocality: "Kristianstad",
     addressCountry: "SE",
   },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+46-44-12-22-15",
+    contactType: "customer service",
+    areaServed: "SE",
+    availableLanguage: ["sv", "en"],
+  },
 };
 
 export const metadata: Metadata = {
@@ -68,7 +75,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@bowlingkristianstad",
     title: "Bowling Kristianstad | Bowlinghall vid Kristianstad Arena",
     description:
       "Bowla i Kristianstad med moderna banor, disco bowling, kalas och företagsevent nära Kristianstad Arena.",
@@ -86,10 +92,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sv">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+        <link rel="alternate" href={SITE_URL} hrefLang="sv" />
+        <link rel="alternate" href={`${SITE_URL}/en`} hrefLang="en" />
+        <link rel="alternate" href={SITE_URL} hrefLang="x-default" />
+      </head>
       <body className="antialiased flex flex-col min-h-screen">
         <LanguageProvider>
           <Header />
-          <main className="grow">
+          <main className="grow" role="main" aria-label="Main content">
             {children}
           </main>
           <script

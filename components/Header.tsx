@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { getStrings } from '@/lib/strings';
 
-export default function Header() {
+export default function Header({ backgroundImage }: { backgroundImage?: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { lang, setLang } = useLanguage();
   const t = getStrings(lang);
@@ -14,11 +14,23 @@ export default function Header() {
     setLang(lang === 'sv' ? 'en' : 'sv');
   };
 
+  const headerStyle = backgroundImage
+    ? {
+        backgroundImage: `url('${backgroundImage}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }
+    : {};
+
   return (
     <header
-      className={`text-white sticky top-0 transition-colors duration-300 bg-linear-to-r from-red-800 to-rose-800 z-50 shadow-lg`}
+      role="banner"
+      style={headerStyle}
+      className={`text-white sticky top-0 transition-colors duration-300 ${
+        !backgroundImage ? 'bg-linear-to-r from-red-800 to-rose-800' : ''
+      } z-50 shadow-lg`}
     >
-      <nav className="container mx-auto px-4 py-8">
+      <nav className="container mx-auto px-4 py-8" aria-label="Huvudnavigation">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-3xl font-bold hover:text-gray-300 transition-colors">
             Bowling Kristianstad
