@@ -18,8 +18,8 @@ export default function AboutPage() {
   const openingHours = getOpeningHours(lang);
 
   return (
-    <div className="bg-linear-to-r from-gray-50 to-white py-20 px-4">
-      <section className="px-4" aria-label="Öppettider hero">
+    <div className="bg-linear-to-r from-gray-50 to-white">
+      <section className="px-4 pt-16" aria-label="Öppettider hero">
         <h1 className="text-5xl font-bold text-center mb-6 text-gray-800">
           {openingText.heroTitle}
         </h1>
@@ -29,7 +29,7 @@ export default function AboutPage() {
       </section>
 
       {/* About Content */}
-      <section className="px-4" aria-label="Öppettider och information">
+      <section className="px-4 mb-16" aria-label="Öppettider och information">
         <div className="container mx-auto max-w-4xl">
           {/* Opening Hours */}
           <article className="bg-white rounded-lg shadow-lg p-8 mb-12" aria-label="Öppettider lista">
