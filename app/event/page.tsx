@@ -102,7 +102,7 @@ export default function EventPage() {
               </div>
               
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold mb-8 text-center text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h3 className="text-3xl font-bold mb-8 text-center text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
                   {event.menuTitle}
                 </h3>
                 
@@ -110,20 +110,20 @@ export default function EventPage() {
                   {menuOptions.map((item) => (
                     <div key={item.id} className="pb-6 border-b border-gray-200 last:border-b-0">
                       <div className="flex items-start gap-3 mb-2">
-                        <span className="text-red-600 text-xl font-bold">✦</span>
+                        <span className="text-red-600 text-2xl font-bold">✦</span>
                         <div className="flex-1">
-                          <h4 className="text-xl font-bold text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>{item.name}</h4>
+                          <h4 className="text-2xl font-bold text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>{item.name}</h4>
                         </div>
                       </div>
                       {item.description && (
-                        <p className="text-gray-700 ml-7 text-sm leading-relaxed" style={{ fontFamily: "'Lora', serif" }}>{item.description}</p>
+                        <p className="text-gray-700 ml-7 text-base leading-relaxed" style={{ fontFamily: "'Lora', serif" }}>{item.description}</p>
                       )}
                       {item.price > 0 ? (
-                        <p className="text-gray-700 ml-7 text-sm font-semibold mt-2">
+                        <p className="text-gray-700 ml-7 text-base font-semibold mt-2">
                           {item.price}kr, {item.unit}
                         </p>
                       ) : (
-                        <p className="text-gray-700 ml-7 text-sm font-semibold mt-2">
+                        <p className="text-gray-700 ml-7 text-base font-semibold mt-2">
                           {item.unit}
                         </p>
                       )}
