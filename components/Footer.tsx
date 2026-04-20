@@ -74,7 +74,7 @@ export default function Footer() {
           <p>&copy; {new Date().getFullYear()} 
             <Link href="/" className="hover:text-white transition-colors"> Bowling Kristianstad</Link>. 
             All rights reserved | 
-            <Link href="https://hugonilsson.vercel.app/"target="_blank"rel="noopener noreferrer"className="hover:text-white transition-colors"> Hugo Nilsson </Link>
+            <Link href="https://hugo-nilsson.se/"target="_blank"rel="noopener noreferrer"className="hover:text-white transition-colors"> Hugo Nilsson </Link>
           </p>
         </div>
       </div>

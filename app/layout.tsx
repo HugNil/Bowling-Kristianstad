@@ -2,71 +2,111 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BookingBubble from "@/components/BookingBubble";
 import { LanguageProvider } from "@/lib/LanguageContext";
+import {
+  absoluteUrl,
+  business,
+  DEFAULT_OG_IMAGE,
+  keywords,
+  LOGO_IMAGE,
+  openingHoursSpecification,
+  routeSeo,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 
-const SITE_URL = "https://www.bowlingkristianstad.se";
-const OG_IMAGE = `${SITE_URL}/hero-bowling-lanes.jpg`;
-const MAP_LINK = "https://www.google.com/maps?q=56.0234928,14.1632581";
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SportsActivityLocation",
-  name: "Bowling Kristianstad",
-  description:
-    "Bowla i Kristianstad med moderna banor, disco bowling, kalas och företagsevent nära Kristianstad Arena.",
-  url: SITE_URL,
-  image: OG_IMAGE,
-  hasMap: MAP_LINK,
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 56.0234928,
-    longitude: 14.1632581,
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "SportsActivityLocation"],
+    "@id": `${SITE_URL}/#business`,
+    name: SITE_NAME,
+    alternateName: "Bowling Kristianstad AB",
+    description: routeSeo.home.description,
+    url: SITE_URL,
+    image: [DEFAULT_OG_IMAGE],
+    logo: LOGO_IMAGE,
+    hasMap: business.mapUrl,
+    telephone: business.telephone,
+    email: business.email,
+    priceRange: business.priceRange,
+    paymentAccepted: "Swish, Cash",
+    currenciesAccepted: "SEK",
+    sameAs: [business.facebookUrl],
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: business.latitude,
+      longitude: business.longitude,
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: business.streetAddress,
+      postalCode: business.postalCode,
+      addressLocality: business.addressLocality,
+      addressRegion: business.addressRegion,
+      addressCountry: business.addressCountry,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: business.telephone,
+      email: business.email,
+      contactType: "customer service",
+      areaServed: "SE",
+      availableLanguage: ["sv", "en"],
+    },
+    openingHoursSpecification: openingHoursSpecification.map((hours) => ({
+      "@type": "OpeningHoursSpecification",
+      ...hours,
+    })),
   },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Kristianstad",
-    addressCountry: "SE",
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    name: SITE_NAME,
+    url: SITE_URL,
+    inLanguage: ["sv-SE", "en"],
+    publisher: {
+      "@id": `${SITE_URL}/#business`,
+    },
   },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+46-44-12-22-15",
-    contactType: "customer service",
-    areaServed: "SE",
-    availableLanguage: ["sv", "en"],
-  },
-};
+];
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Bowling Kristianstad | Bowlinghall vid Kristianstad Arena",
-    template: "%s | Bowling Kristianstad",
+    default: routeSeo.home.title,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Bowla i Kristianstad med moderna banor, disco bowling, kalas och företagsevent nära Kristianstad Arena.",
-  keywords: [
-    "bowling",
-    "bowling kristianstad",
-    "disco bowling",
-    "bowlinghall",
-    "kalas bowling",
-    "företagsevent",
-    "kristianstad arena",
-  ],
+  description: routeSeo.home.description,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "Bowlinghall",
+  keywords,
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   openGraph: {
     type: "website",
     locale: "sv_SE",
     url: SITE_URL,
-    siteName: "Bowling Kristianstad",
-    title: "Bowling Kristianstad | Bowlinghall vid Kristianstad Arena",
-    description:
-      "Bowla i Kristianstad med moderna banor, disco bowling, kalas och företagsevent nära Kristianstad Arena.",
+    siteName: SITE_NAME,
+    title: routeSeo.home.title,
+    description: routeSeo.home.description,
     images: [
       {
-        url: OG_IMAGE,
+        url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 630,
         alt: "Bowling Kristianstad banor",
@@ -75,13 +115,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bowling Kristianstad | Bowlinghall vid Kristianstad Arena",
-    description:
-      "Bowla i Kristianstad med moderna banor, disco bowling, kalas och företagsevent nära Kristianstad Arena.",
-    images: [OG_IMAGE],
+    title: routeSeo.home.title,
+    description: routeSeo.home.description,
+    images: [DEFAULT_OG_IMAGE],
   },
   alternates: {
-    canonical: SITE_URL,
+    canonical: absoluteUrl(routeSeo.home.path),
   },
 };
 
@@ -93,9 +132,8 @@ export default function RootLayout({
   return (
     <html lang="sv">
       <head>
-        <link rel="alternate" href={SITE_URL} hrefLang="sv" />
-        <link rel="alternate" href={`${SITE_URL}/en`} hrefLang="en" />
-        <link rel="alternate" href={SITE_URL} hrefLang="x-default" />
+        <link rel="preconnect" href="https://www.google.com" />
+        <link rel="preconnect" href="https://www.gstatic.com" />
       </head>
       <body className="antialiased flex flex-col min-h-screen">
         <LanguageProvider>
@@ -107,6 +145,7 @@ export default function RootLayout({
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
+          <BookingBubble />
           <Footer />
         </LanguageProvider>
       </body>

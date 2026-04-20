@@ -31,7 +31,7 @@ export const stringsSv = {
   // Home page
   home: {
     heroTitle: "Välkommen till Bowling Kristianstad",
-    heroSubtitle: "Upplev den bästa bowlingen i Kristianstad med moderna banor och fantastisk atmosfär",
+    heroSubtitle: "Bowling i Kristianstad nära Kristianstad Arena för familj, vänner, skolor och företag. Här hittar du priser, öppettider, barnkalas, festpaket och discobowling.",
     heroPrimaryCta: "Se Priser",
     heroSecondaryCta: "Om Oss",
     featuresTitle: "Varför Välja Oss?",
@@ -55,7 +55,66 @@ export const stringsSv = {
     ctaTitle: "Redo att Börja Bowla?",
     ctaBody: "Boka din bana idag och upplev den bästa bowlingen i Kristianstad!",
     ctaButton: "Se Våra Priser",
+    bookingTitle: "Boka bana",
+    bookingBody: "Ring oss för att boka bowling. Vi rekommenderar att du bokar i förväg, särskilt på helger, lov och när ni är ett större sällskap.",
+    bookingCallButton: "Ring nu",
+    bookingEmailButton: "Maila oss",
+    localIntroTitle: "Bowling i Kristianstad nära Kristianstad Arena",
+    localIntroParagraphs: [
+      "Bowling Kristianstad är en bowlinghall för familjer, kompisgäng, skolor, föreningar och företag som vill bowla i en avslappnad miljö nära Kristianstad Arena.",
+      "På sidan hittar du aktuella priser, öppettider, information om discobowling, barnkalas och fest eller företagsevent. Ring oss gärna om du vill boka bana eller planera ett större sällskap.",
+    ],
+    popularChoicesTitle: "Populära val",
+    popularChoices: [
+      {
+        title: "Bowla med familjen",
+        body: "Perfekt för en rolig aktivitet tillsammans. Skohyra ingår, max är 5 personer per bana och vi rekommenderar max 4 för bästa spelupplevelse.",
+        href: "/pricing",
+        label: "Se priser",
+      },
+      {
+        title: "Barnkalas",
+        body: "Fira bowlingkalas med mat, glass, godispåse och bowling i cirka två timmar.",
+        href: "/birthday",
+        label: "Läs om kalas",
+      },
+      {
+        title: "Fest & företagsevent",
+        body: "Boka bowling, mat, quiz eller hela hallen för kick-off, fest eller företagsevent.",
+        href: "/event",
+        label: "Planera event",
+      },
+    ],
+    reviewsTitle: "Recensioner på Google",
+    reviewsBody: "Vill du se vad gäster tycker om Bowling Kristianstad? Läs våra recensioner direkt på Google.",
+    reviewsButton: "Läs recensioner",
+    faqTitle: "Vanliga frågor",
+    faqIntro: "Här hittar du snabba svar inför ditt besök hos Bowling Kristianstad.",
+    faqItems: [
+      {
+        question: "Behöver man boka bowling i förväg?",
+        answer: "Vi rekommenderar att du bokar i förväg, särskilt på helger, lov och vid större sällskap. Ring oss på 044-12 22 15 så hjälper vi dig att hitta en ledig tid.",
+      },
+      {
+        question: "Ingår bowlingskor i priset?",
+        answer: "Ja, skohyra ingår i priset hos Bowling Kristianstad.",
+      },
+      {
+        question: "Hur många personer kan spela på en bana?",
+        answer: "Vi har max 5 personer per bana, men rekommenderar max 4 personer per bana för att alla ska få en bra spelupplevelse.",
+      },
+      {
+        question: "Har ni discobowling?",
+        answer: "Ja, vi har discobowling varje fredag från kl. 18:00 och lördagar/söndagar från kl. 13:00 tills stängning.",
+      },
+      {
+        question: "Kan man boka barnkalas eller företagsevent?",
+        answer: "Ja, vi erbjuder både bowlingkalas, fest, kick-off och företagsevent. Kontakta oss så skräddarsyr vi upplägget efter ert sällskap.",
+      },
+    ],
     mapHeading: "Här finns vi",
+    mapBody: "Du hittar oss på Karlavägen 2, 291 54 Kristianstad, nära Kristianstad Arena.",
+    mapButton: "Öppna i Google Maps",
   },
 
   // About page
@@ -80,8 +139,8 @@ export const stringsSv = {
     infoTitle: "Bra att veta!",
     infoParagraphs: [
       "Vi förbehåller oss rätten att ändra öppettider vid helgdagar och speciella evenemang vid låg beläggning. Kontakta oss gärna för att få den senaste informationen.",
-      "Max <strong>5</strong> personer per bana för att garantera en bra spelupplevelse för alla. Övriga personer i sällskapet är välkomna att kolla på utanför banområdet.",
-      "Vi har discobowling varje fredag från kl. 18:00 och lördagar/söndagar från kl. 14:00 tills stängning. Under discobowlingen är det hög musik och blinkande lampor, vilket kan påverka spelupplevelsen.",
+      "Max <strong>5</strong> personer per bana, men vi rekommenderar max <strong>4</strong> personer per bana för att garantera en bra spelupplevelse för alla. Övriga personer i sällskapet är välkomna att kolla på utanför banområdet.",
+      "Vi har discobowling varje fredag från kl. 18:00 och lördagar/söndagar från kl. 13:00 tills stängning. Under discobowlingen är det hög musik och blinkande lampor, vilket kan påverka spelupplevelsen.",
       "1 timme består av 57 minuter speltid.",
       "Kom ihåg att boka din bana i förväg, särskilt under helger och lov, för att säkerställa att ni får plats när ni vill spela.",
     ],
@@ -99,6 +158,29 @@ export const stringsSv = {
     bookTitle: "Boka Nu!",
     bookBody: "Ring oss för att boka din bana eller skicka ett mail så hjälper vi dig.",
     bookNote: "Skohyra ingår i priset. Vi tar emot Swish och Kontant.",
+    faqTitle: "Vanliga frågor om priser",
+    faqItems: [
+      {
+        question: "Ingår bowlingskor i priset?",
+        answer: "Ja, skohyra ingår i priset.",
+      },
+      {
+        question: "Hur lång är en bowlingtimme?",
+        answer: "1 timme består av 57 minuter speltid.",
+      },
+      {
+        question: "Hur många kan spela på en bana?",
+        answer: "Max 5 personer per bana, men vi rekommenderar max 4 personer per bana för en bättre spelupplevelse.",
+      },
+      {
+        question: "Kan skolor boka bowling?",
+        answer: "Ja, skolor kan boka till särskilt pris på vardagar före kl. 16:00. Vid bokning utanför öppettider gäller minst 5 banor.",
+      },
+      {
+        question: "Vilka betalningssätt tar ni emot?",
+        answer: "Vi tar emot Swish och kontant.",
+      },
+    ],
   },
   event: {
     heroTitle: "Event & Företagsevent",
@@ -157,16 +239,85 @@ export const stringsSv = {
       bookingCTA1: "Ring oss så hjälper vi dig att boka och ",
       bookingCTA2: "kolla lediga datum!",
     },
+    faqTitle: "Vanliga frågor om bowlingkalas",
+    faqItems: [
+      {
+        question: "Hur länge pågår kalaset?",
+        answer: "Kalaset pågår i cirka 2 timmar.",
+      },
+      {
+        question: "Vad ingår i ett bowlingkalas?",
+        answer: "Bowling, läsk, korv eller hamburgare, glass, godispåse, present till födelsedagsbarnet och kaffe eller te till föräldrarna ingår.",
+      },
+      {
+        question: "Måste en vuxen vara med?",
+        answer: "Ja, minst en ansvarig vuxen från ert sällskap måste finnas på plats under hela kalaset.",
+      },
+      {
+        question: "Kan ni hjälpa vid allergier?",
+        answer: "Ja, meddela oss vid bokning om det finns allergier eller särskilda behov.",
+      },
+      {
+        question: "Hur många barn spelar på en bana?",
+        answer: "Vid bowlingkalas spelar barnen 3-5 barn per bana beroende på hur många som är med i kalaset.",
+      },
+    ],
   },
 
   // Results page
   results: {
     title: "Resultat & Föreningar",
-    subtitle: "Håll koll på dina bowlingresultat och våra föreningar",
-    associationsTitle: "Våra Föreningar",
-    associationsDescription: "Hos Bowling Kristianstad har vi flera aktiva bowlingföreningar som välkomnar nya medlemmar:",
-    externalLinksTitle: "Externa Länkar",
-    externalLinksDescription: "Kolla in resultat och information från våra partners:",
+    subtitle: "Följ livescore, hitta aktuella resultat och läs mer om föreningarna som spelar hos Bowling Kristianstad.",
+    quickLinks: [
+      { label: "Live scoring", href: "https://livescoring.bowlit.nu/bowling-kristianstad" },
+      { label: "Swebowl", href: "https://www.swebowl.se" },
+      { label: "Föreningar", href: "#foreningar" },
+    ],
+    associationsTitle: "Föreningar hos oss",
+    associationsDescription: "Bowling Kristianstad är hemmahall för flera föreningar med allt från ungdomsverksamhet till seniorbowling och tävlingsspel.",
+    associationButton: "Besök förening",
+    associations: [
+      {
+        name: "BKALLON",
+        description: "Aktiv bowlingförening med spelare på flera nivåer.",
+        website: "https://www.laget.se/BKALLON",
+      },
+      {
+        name: "Glenfield",
+        description: "Ungdomsförening med tävlingsverksamhet och sociala aktiviteter.",
+        website: "https://www.laget.se/GLENFIELD",
+      },
+      {
+        name: "PBK Kristianstad",
+        description: "Pensionärsförening med aktiv tävlingsverksamhet och gemytlig bowling.",
+        website: "https://www.laget.se/PBKKRISTIANSTAD",
+      },
+      {
+        name: "Bromölla Bowling",
+        description: "Förening med aktiv bowlingverksamhet och matcher i hallen.",
+        website: "https://www.laget.se/bromollabowling",
+      },
+    ],
+    externalLinksTitle: "Resultat & livescore",
+    externalLinksDescription: "Här hittar du externa länkar till live scoring, resultat och information från svensk bowling.",
+    externalLinkButton: "Öppna",
+    externalLinks: [
+      {
+        name: "Bowlit live scoring",
+        description: "Följ live scoring från Bowling Kristianstad.",
+        url: "https://livescoring.bowlit.nu/bowling-kristianstad",
+        logo: "/bowlit-150x150.png",
+      },
+      {
+        name: "Swebowl",
+        description: "Svenska Bowlingförbundets resultat och tävlingsinformation.",
+        url: "https://www.swebowl.se",
+        logo: "/images.jpg",
+      },
+    ],
+    ctaTitle: "Vill du börja spela i en förening?",
+    ctaBody: "Kontakta oss eller besök föreningarnas sidor för mer information om träning, matcher och medlemskap.",
+    ctaButton: "Ring Bowling Kristianstad",
   },
 };
 
@@ -203,7 +354,7 @@ export const stringsEn = {
   // Home page
   home: {
     heroTitle: "Welcome to Bowling Kristianstad",
-    heroSubtitle: "Experience the best bowling in Kristianstad with modern lanes and fantastic atmosphere",
+    heroSubtitle: "Bowling in Kristianstad near Kristianstad Arena for families, friends, schools and companies. Find pricing, opening hours, birthday parties, event packages and disco bowling.",
     heroPrimaryCta: "View Pricing",
     heroSecondaryCta: "About Us",
     featuresTitle: "Why Choose Us?",
@@ -227,7 +378,66 @@ export const stringsEn = {
     ctaTitle: "Ready to Start Bowling?",
     ctaBody: "Book your lane today and experience the best bowling in Kristianstad!",
     ctaButton: "View Our Pricing",
+    bookingTitle: "Book a lane",
+    bookingBody: "Call us to book bowling. We recommend booking in advance, especially during weekends, holidays and for larger groups.",
+    bookingCallButton: "Call now",
+    bookingEmailButton: "Email us",
+    localIntroTitle: "Bowling in Kristianstad near Kristianstad Arena",
+    localIntroParagraphs: [
+      "Bowling Kristianstad is a bowling alley for families, friends, schools, associations and companies who want to bowl in a relaxed setting near Kristianstad Arena.",
+      "On the website you can find pricing, opening hours, disco bowling, birthday parties and party or corporate event information. Call us if you want to book a lane or plan a larger group.",
+    ],
+    popularChoicesTitle: "Popular choices",
+    popularChoices: [
+      {
+        title: "Bowling with the family",
+        body: "A fun activity together. Shoe rental is included, the maximum is 5 people per lane and we recommend a maximum of 4 for the best playing experience.",
+        href: "/pricing",
+        label: "View pricing",
+      },
+      {
+        title: "Birthday parties",
+        body: "Celebrate with food, ice cream, candy bags and bowling for about two hours.",
+        href: "/birthday",
+        label: "Read about parties",
+      },
+      {
+        title: "Party & corporate events",
+        body: "Book bowling, food, quiz or the whole alley for kick-offs, parties or corporate events.",
+        href: "/event",
+        label: "Plan an event",
+      },
+    ],
+    reviewsTitle: "Reviews on Google",
+    reviewsBody: "Want to see what guests think about Bowling Kristianstad? Read our reviews directly on Google.",
+    reviewsButton: "Read reviews",
+    faqTitle: "Frequently asked questions",
+    faqIntro: "Find quick answers before your visit to Bowling Kristianstad.",
+    faqItems: [
+      {
+        question: "Do I need to book bowling in advance?",
+        answer: "We recommend booking in advance, especially during weekends, holidays and for larger groups. Call us at 044-12 22 15 and we will help you find an available time.",
+      },
+      {
+        question: "Are bowling shoes included in the price?",
+        answer: "Yes, shoe rental is included in the price at Bowling Kristianstad.",
+      },
+      {
+        question: "How many people can play on one lane?",
+        answer: "We allow a maximum of 5 people per lane, but recommend a maximum of 4 people per lane so everyone gets a good bowling experience.",
+      },
+      {
+        question: "Do you offer disco bowling?",
+        answer: "Yes, we offer disco bowling every Friday from 6 PM and Saturdays/Sundays from 1 PM until closing.",
+      },
+      {
+        question: "Can we book birthday parties or corporate events?",
+        answer: "Yes, we offer bowling parties, private parties, kick-offs and corporate events. Contact us and we will tailor the setup for your group.",
+      },
+    ],
     mapHeading: "Find Us Here",
+    mapBody: "You will find us at Karlavägen 2, 291 54 Kristianstad, near Kristianstad Arena.",
+    mapButton: "Open in Google Maps",
   },
 
   // About page
@@ -252,8 +462,8 @@ export const stringsEn = {
     infoTitle: "Good to Know!",
     infoParagraphs: [
       "We reserve the right to change opening hours during holidays and special events with low occupancy. Feel free to contact us for the latest information.",
-      "Maximum <strong>5</strong> players per lane to guarantee a good bowling experience for everyone. Other people in your group are welcome to watch from outside of the lane area.",
-      "We have disco bowling every Friday from 6 PM and Saturdays/Sundays from 2 PM until closing. During disco bowling, there is loud music and flashing lights, which may affect the bowling experience.",
+      "Maximum <strong>5</strong> players per lane, but we recommend a maximum of <strong>4</strong> players per lane to guarantee a good bowling experience for everyone. Other people in your group are welcome to watch from outside of the lane area.",
+      "We have disco bowling every Friday from 6 PM and Saturdays/Sundays from 1 PM until closing. During disco bowling, there is loud music and flashing lights, which may affect the bowling experience.",
       "1 hour consists of 57 minutes of playtime.",
       "Remember to book your lane in advance, especially during weekends and holidays, to ensure you get a spot when you want to play.",
     ],
@@ -271,6 +481,29 @@ export const stringsEn = {
     bookTitle: "Book Now!",
     bookBody: "Call us to book your lane or send an email and we'll help you.",
     bookNote: "Shoe rental is included in the price. We accept Swish and Cash.",
+    faqTitle: "Pricing FAQ",
+    faqItems: [
+      {
+        question: "Are bowling shoes included in the price?",
+        answer: "Yes, shoe rental is included in the price.",
+      },
+      {
+        question: "How long is one bowling hour?",
+        answer: "1 hour consists of 57 minutes of playtime.",
+      },
+      {
+        question: "How many people can play on one lane?",
+        answer: "Maximum 5 people per lane, but we recommend a maximum of 4 people per lane for a better bowling experience.",
+      },
+      {
+        question: "Can schools book bowling?",
+        answer: "Yes, schools can book at a special price on weekdays before 4 PM. For bookings outside opening hours, a minimum of 5 lanes applies.",
+      },
+      {
+        question: "Which payment methods do you accept?",
+        answer: "We accept Swish and cash.",
+      },
+    ],
   },
   event: {
     heroTitle: "Events & Corporate Events",
@@ -329,16 +562,85 @@ export const stringsEn = {
       bookingCTA1: "Call us and we will help you to book and ",
       bookingCTA2: "check available dates!",
     },
+    faqTitle: "Birthday party FAQ",
+    faqItems: [
+      {
+        question: "How long does the party last?",
+        answer: "The party lasts about 2 hours.",
+      },
+      {
+        question: "What is included in a bowling party?",
+        answer: "Bowling, soda, hot dog or hamburger, ice cream, candy bag, a present for the birthday child and coffee or tea for parents are included.",
+      },
+      {
+        question: "Does an adult need to be present?",
+        answer: "Yes, at least one responsible adult from your group must be present during the entire party.",
+      },
+      {
+        question: "Can you help with allergies?",
+        answer: "Yes, let us know when booking if there are allergies or special needs.",
+      },
+      {
+        question: "How many children play on one lane?",
+        answer: "For bowling parties, children play 3-5 children per lane depending on the total number of children in the party.",
+      },
+    ],
   },
 
   // Results page
   results: {
     title: "Results & Associations",
-    subtitle: "Keep track of your bowling results and our associations",
-    associationsTitle: "Our Associations",
-    associationsDescription: "At Bowling Kristianstad we have several active bowling associations that welcome new members:",
-    externalLinksTitle: "External Links",
-    externalLinksDescription: "Check out results and information from our partners:",
+    subtitle: "Follow live scoring, find current results and learn more about the clubs that play at Bowling Kristianstad.",
+    quickLinks: [
+      { label: "Live scoring", href: "https://livescoring.bowlit.nu/bowling-kristianstad" },
+      { label: "Swebowl", href: "https://www.swebowl.se" },
+      { label: "Clubs", href: "#foreningar" },
+    ],
+    associationsTitle: "Clubs at our alley",
+    associationsDescription: "Bowling Kristianstad is the home alley for several clubs, from youth activities to senior bowling and competitive play.",
+    associationButton: "Visit club",
+    associations: [
+      {
+        name: "BKALLON",
+        description: "Active bowling club with players across several levels.",
+        website: "https://www.laget.se/BKALLON",
+      },
+      {
+        name: "Glenfield",
+        description: "Youth club with competitive bowling and social activities.",
+        website: "https://www.laget.se/GLENFIELD",
+      },
+      {
+        name: "PBK Kristianstad",
+        description: "Senior club with active competitions and friendly bowling.",
+        website: "https://www.laget.se/PBKKRISTIANSTAD",
+      },
+      {
+        name: "Bromölla Bowling",
+        description: "Club with active bowling and matches in the alley.",
+        website: "https://www.laget.se/bromollabowling",
+      },
+    ],
+    externalLinksTitle: "Results & live scoring",
+    externalLinksDescription: "Find external links for live scoring, results and information from Swedish bowling.",
+    externalLinkButton: "Open",
+    externalLinks: [
+      {
+        name: "Bowlit live scoring",
+        description: "Follow live scoring from Bowling Kristianstad.",
+        url: "https://livescoring.bowlit.nu/bowling-kristianstad",
+        logo: "/bowlit-150x150.png",
+      },
+      {
+        name: "Swebowl",
+        description: "Results and competition information from the Swedish Bowling Federation.",
+        url: "https://www.swebowl.se",
+        logo: "/images.jpg",
+      },
+    ],
+    ctaTitle: "Do you want to join a club?",
+    ctaBody: "Contact us or visit the club websites for more information about practice, matches and membership.",
+    ctaButton: "Call Bowling Kristianstad",
   },
 };
 
