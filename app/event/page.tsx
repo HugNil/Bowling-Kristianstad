@@ -16,7 +16,7 @@ export default function EventPage() {
       <section
         aria-label="Event hero"
         style={{
-          backgroundImage: `url('/gemini_birthday.png')`,
+          backgroundImage: `url('/event-bowling-drinks.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

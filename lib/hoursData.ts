@@ -1,12 +1,12 @@
 // Stängda datum (separerade i kategorier för enkel redigering)
-const FIXED_HOLIDAYS = [
-  '04-18', // Långfredagen
-  '04-20', // Påskdagen
-  '04-21', // Annandag påsk
-  '05-29', // Kristi himmelsfärdsdag
-  '06-20', // Midsommarafton
-  '06-21', // Midsommardagen
-];
+//const FIXED_HOLIDAYS = [
+  //'04-18', // Långfredagen
+  //'04-20', // Påskdagen
+  //'04-21', // Annandag påsk
+  //'05-29', // Kristi himmelsfärdsdag
+  //'06-20', // Midsommarafton
+  //'06-21', // Midsommardagen
+//];
 
 const RECURRING_HOLIDAYS = [
   '12-23', // Lilljulafton
@@ -27,7 +27,8 @@ const SUMMER_BREAK = [
 ];
 
 // Samlad lista utan duplicat
-const closedDates = Array.from(new Set([...FIXED_HOLIDAYS, ...RECURRING_HOLIDAYS, ...SUMMER_BREAK]));
+//const closedDates = Array.from(new Set([...FIXED_HOLIDAYS, ...RECURRING_HOLIDAYS, ...SUMMER_BREAK]));
+const closedDates = Array.from(new Set([...RECURRING_HOLIDAYS, ...SUMMER_BREAK]));
 
 export const hoursData = {
   sv: [

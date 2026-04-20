@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/lib/LanguageContext";
 
 const SITE_URL = "https://www.bowlingkristianstad.se";
-const OG_IMAGE = "https://www.bowlingkristianstad.se/wp-content/uploads/2017/12/shutterstock_420254671.jpg";
+const OG_IMAGE = `${SITE_URL}/hero-bowling-lanes.jpg`;
 const MAP_LINK = "https://www.google.com/maps?q=56.0234928,14.1632581";
 const jsonLd = {
   "@context": "https://schema.org",

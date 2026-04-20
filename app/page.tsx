@@ -5,7 +5,7 @@ import Image from "next/image";
 import { getStrings } from "@/lib/strings";
 import { useLanguage } from "@/lib/LanguageContext";
 
-const HERO_IMAGE_URL = "https://www.bowlingkristianstad.se/wp-content/uploads/2017/12/shutterstock_420254671.jpg";
+const HERO_IMAGE_URL = "/hero-bowling-lanes.jpg";
 
 export default function Home() {
   const { lang } = useLanguage();
