@@ -1,3 +1,4 @@
+import { ContentBoundary } from "@/lib/ContentContext";
 import PricingPageClient from "./PricingPageClient";
 import { createFaqJsonLd } from "@/lib/faqSchema";
 import { createPageMetadata } from "@/lib/metadata";
@@ -10,7 +11,7 @@ const faqJsonLd = createFaqJsonLd(routeSeo.pricing.path, stringsSv.pricing.faqIt
 export default function PricingPage() {
   return (
     <>
-      <PricingPageClient />
+      <ContentBoundary><PricingPageClient /></ContentBoundary>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

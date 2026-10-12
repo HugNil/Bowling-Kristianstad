@@ -17,7 +17,6 @@ export const business = {
   addressCountry: "SE",
   latitude: 56.0234928,
   longitude: 14.1632581,
-  priceRange: "140-3400 SEK",
   mapUrl: "https://www.google.com/maps?q=56.0234928,14.1632581",
   facebookUrl: "https://www.facebook.com/profile.php?id=100046052304741",
 };
@@ -86,16 +85,6 @@ export const keywords = [
   "företagsevent Kristianstad",
   "fest Kristianstad",
   "Kristianstad Arena",
-];
-
-export const openingHoursSpecification = [
-  { dayOfWeek: "Monday", opens: "09:30", closes: "20:00" },
-  { dayOfWeek: "Tuesday", opens: "11:00", closes: "20:00" },
-  { dayOfWeek: "Wednesday", opens: "09:30", closes: "20:00" },
-  { dayOfWeek: "Thursday", opens: "11:00", closes: "20:00" },
-  { dayOfWeek: "Friday", opens: "14:00", closes: "19:00" },
-  { dayOfWeek: "Saturday", opens: "13:00", closes: "19:00" },
-  { dayOfWeek: "Sunday", opens: "13:00", closes: "18:00" },
 ];
 
 export function absoluteUrl(path: string) {

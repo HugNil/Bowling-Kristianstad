@@ -1,156 +1,36 @@
 'use client';
-
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { getStrings } from '@/lib/strings';
 
-export default function Header({ backgroundImage }: { backgroundImage?: string }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Header() {
+  const [open, setOpen] = useState(false);
+  const path = usePathname();
   const { lang, setLang } = useLanguage();
   const t = getStrings(lang);
-
-  const toggleLanguage = () => {
-    setLang(lang === 'sv' ? 'en' : 'sv');
-  };
-
-  const headerStyle = backgroundImage
-    ? {
-        backgroundImage: `url('${backgroundImage}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }
-    : {};
-
-  return (
-    <header
-      role="banner"
-      style={headerStyle}
-      className={`text-white sticky top-0 transition-colors duration-300 ${
-        !backgroundImage ? 'bg-linear-to-r from-red-800 to-rose-800' : ''
-      } z-50 shadow-lg`}
-    >
-      <nav className="container mx-auto px-4 py-8" aria-label="Huvudnavigation">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="text-3xl font-bold hover:text-gray-300 transition-colors">
-            Bowling Kristianstad
-          </Link>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center gap-4">
-            <button
-              onClick={toggleLanguage}
-              className="bg-white/20 hover:bg-white/30 text-white px-3 py-1 rounded transition-colors"
-            >
-              {lang === 'sv' ? 'EN' : 'SV'}
-            </button>
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-
-          {/* Desktop navigation */}
-          <div className="hidden md:flex space-x-8">
-            <Link href="/" className="hover:text-gray-300 text-xl font-medium transition-colors">
-              {t.header.home}
-            </Link>
-            <Link href="/pricing" className="hover:text-gray-300 text-xl font-medium transition-colors">
-              {t.header.pricing}
-            </Link>
-            <Link href="/openinghours" className="hover:text-gray-300 text-xl font-medium transition-colors">
-              {t.header.openingHours}
-            </Link>
-            {/*
-            <Link href="/about" className="hover:text-gray-300 text-xl font-medium transition-colors">
-              {t.header.about}
-            </Link>
-            */}
-            <Link href="/birthday" className="hover:text-gray-300 text-xl font-medium transition-colors">
-              {t.header.birthday}
-            </Link>
-            <Link href="/event" className="hover:text-gray-300 text-xl font-medium transition-colors">
-              {t.header.event}
-            </Link>
-            <Link href="/results" className="hover:text-gray-300 text-xl font-medium transition-colors">
-              {t.header.results}
-            </Link>
-          </div>
-        </div>
-
-        {/* Mobile navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 space-y-2">
-            <Link 
-              href="/" 
-              className="block py-2 hover:text-gray-300 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.header.home}
-            </Link>
-            <Link 
-              href="/pricing" 
-              className="block py-2 hover:text-gray-300 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.header.pricing}
-            </Link>
-            {/*
-            <Link 
-              href="/about" 
-              className="block py-2 hover:text-gray-300 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.header.about}
-            </Link>
-            */}
-            <Link 
-              href="/openinghours" 
-              className="block py-2 hover:text-gray-300 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.header.openingHours}
-            </Link>
-            <Link 
-              href="/birthday" 
-              className="block py-2 hover:text-gray-300 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.header.birthday}
-            </Link>
-            <Link 
-              href="/event" 
-              className="block py-2 hover:text-gray-300 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.header.event}
-            </Link>
-            <Link 
-              href="/results" 
-              className="block py-2 hover:text-gray-300 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.header.results}
-            </Link>
-          </div>
-        )}
+  const links = [
+    ['/pricing', t.header.pricing], ['/openinghours', t.header.openingHours],
+    ['/birthday', t.header.birthday], ['/event', t.header.event], ['/results', t.header.results],
+  ];
+  return <header className="hall-header">
+    <a className="skip-link" href="#main-content">{lang === 'sv' ? 'Hoppa till innehållet' : 'Skip to content'}</a>
+    <div className="hall-nav">
+      <Link href="/" className="wordmark" onClick={() => setOpen(false)} aria-label="Bowling Kristianstad, startsida"><span>Bowling<span className="wordmark-dot">●</span></span><small>Kristianstad</small></Link>
+      <nav className="desktop-nav" aria-label={lang === 'sv' ? 'Huvudmeny' : 'Main navigation'}>
+        {links.map(([href, label]) => <Link key={href} href={href} aria-current={path === href ? 'page' : undefined}>{label}</Link>)}
       </nav>
-
-      {/* Language toggle button - Desktop - Absolute positioned */}
-      <button
-        onClick={toggleLanguage}
-        className="hidden md:block absolute top-8 right-4 bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded transition-colors"
-      >
-        {lang === 'sv' ? 'EN' : 'SV'}
-      </button>
-    </header>
-  );
+      <div className="nav-actions">
+        <button className="language-switch" onClick={() => setLang(lang === 'sv' ? 'en' : 'sv')} aria-label={lang === 'sv' ? 'Switch to English' : 'Byt till svenska'}>{lang === 'sv' ? 'EN' : 'SV'}</button>
+        <a className="hall-button nav-book" href="tel:+4644122215">{lang === 'sv' ? 'Boka bana' : 'Book a lane'} <span aria-hidden="true">↗</span></a>
+        <button className="menu-toggle" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? (lang === 'sv' ? 'Stäng' : 'Close') : (lang === 'sv' ? 'Meny' : 'Menu')} <span aria-hidden="true">{open ? '×' : '☰'}</span></button>
+      </div>
+    </div>
+    {open && <nav id="mobile-navigation" className="mobile-nav" aria-label={lang === 'sv' ? 'Mobilmeny' : 'Mobile navigation'}>
+      <Link href="/" onClick={() => setOpen(false)}>{t.header.home}</Link>
+      {links.map(([href, label]) => <Link key={href} href={href} aria-current={path === href ? 'page' : undefined} onClick={() => setOpen(false)}>{label}<span aria-hidden="true">↗</span></Link>)}
+      <a href="tel:+4644122215">{lang === 'sv' ? 'Boka på' : 'Book on'} 044-12 22 15</a>
+    </nav>}
+  </header>;
 }

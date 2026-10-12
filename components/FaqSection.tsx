@@ -18,7 +18,7 @@ export default function FaqSection({
   intro,
   items,
   contactPhone,
-  className = "py-20 px-4 bg-white",
+  className = "hall-section",
 }: FaqSectionProps) {
   const phoneHref = contactPhone ? `tel:${contactPhone.replace(/\s|-/g, "")}` : "";
 
@@ -44,19 +44,19 @@ export default function FaqSection({
   };
 
   return (
-    <section className={className} aria-label={title}>
+    <section className={`hall-faq ${className}`} aria-label={title}>
       <div className="container mx-auto max-w-4xl">
-        <h2 className="text-4xl font-bold text-center mb-4 text-gray-800">
+        <h2 className="text-4xl font-bold mb-6 text-gray-800">
           {title}
         </h2>
         {intro && (
-          <p className="text-lg text-center text-gray-600 mb-10">{intro}</p>
+          <p className="text-lg text-gray-600 mb-10">{intro}</p>
         )}
-        <div className="space-y-4">
+        <div className="faq-list">
           {items.map((item) => (
             <details
               key={item.question}
-              className="group rounded-lg border border-gray-200 bg-gray-50 p-5 shadow-sm"
+              className="group border-b border-gray-300 py-5"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold text-gray-900">
                 {item.question}

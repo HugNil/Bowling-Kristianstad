@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 type Language = 'sv' | 'en';
 
@@ -12,15 +12,21 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Language>(() => {
-    if (typeof window === 'undefined') return 'sv';
-    const saved = localStorage.getItem('language') as Language | null;
-    return (saved === 'sv' || saved === 'en') ? saved : 'sv';
-  });
-
+  const [lang, setLangState] = useState<Language>('sv');
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('language');
+      if (saved === 'sv' || saved === 'en') {
+        // Restore the browser preference only after hydration.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setLangState(saved);
+      }
+    } catch { /* Storage may be disabled by the browser. */ }
+  }, []);
+  useEffect(() => { document.documentElement.lang = lang; }, [lang]);
   const setLang = (newLang: Language) => {
     setLangState(newLang);
-    localStorage.setItem('language', newLang);
+    try { localStorage.setItem('language', newLang); } catch { /* Language still works for this visit. */ }
   };
 
   return (

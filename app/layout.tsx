@@ -1,5 +1,9 @@
+import { connection } from "next/server";
 import type { Metadata } from "next";
 import "./globals.css";
+import { effectiveExceptions } from "@/lib/content";
+import { getPublicContent } from "@/lib/contentServer";
+import { ContentProvider } from "@/lib/ContentContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookingBubble from "@/components/BookingBubble";
@@ -10,7 +14,6 @@ import {
   DEFAULT_OG_IMAGE,
   keywords,
   LOGO_IMAGE,
-  openingHoursSpecification,
   routeSeo,
   SITE_NAME,
   SITE_URL,
@@ -30,7 +33,6 @@ const jsonLd = [
     hasMap: business.mapUrl,
     telephone: business.telephone,
     email: business.email,
-    priceRange: business.priceRange,
     paymentAccepted: "Swish, Cash",
     currenciesAccepted: "SEK",
     sameAs: [business.facebookUrl],
@@ -55,10 +57,6 @@ const jsonLd = [
       areaServed: "SE",
       availableLanguage: ["sv", "en"],
     },
-    openingHoursSpecification: openingHoursSpecification.map((hours) => ({
-      "@type": "OpeningHoursSpecification",
-      ...hours,
-    })),
   },
   {
     "@context": "https://schema.org",
@@ -124,11 +122,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  await connection();
+  const initial = await getPublicContent();
+  const content = initial.content;
+  const structuredData = jsonLd.map((item, index) => index !== 0 || !content ? item : {
+    ...item,
+    openingHoursSpecification: content.week.map((hours, i) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][i],
+      opens: hours.closed ? '00:00' : hours.opens, closes: hours.closed ? '00:00' : hours.closes,
+    })),
+    specialOpeningHoursSpecification: effectiveExceptions(content).map(hours => ({
+      "@type": "OpeningHoursSpecification", validFrom: hours.start, validThrough: hours.end,
+      opens: hours.closed ? '00:00' : hours.opens, closes: hours.closed ? '00:00' : hours.closes,
+    })),
+  });
   return (
     <html lang="sv">
       <head>
@@ -137,16 +150,18 @@ export default function RootLayout({
       </head>
       <body className="antialiased flex flex-col min-h-screen">
         <LanguageProvider>
+          <ContentProvider initial={initial}>
           <Header />
-          <main className="grow" role="main" aria-label="Main content">
+          <main id="main-content" className="grow" role="main" aria-label="Main content">
             {children}
           </main>
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
           />
           <BookingBubble />
           <Footer />
+        </ContentProvider>
         </LanguageProvider>
       </body>
     </html>

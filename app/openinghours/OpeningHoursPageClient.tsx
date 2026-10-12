@@ -2,7 +2,8 @@
 
 import { getStrings } from '@/lib/strings';
 import { useLanguage } from '@/lib/LanguageContext';
-import { getOpeningHours } from '@/lib/hoursData';
+import { useSiteContent } from '@/lib/ContentContext';
+import { upcomingHours } from '@/lib/content';
 
 interface HoursData {
   id: string;
@@ -15,10 +16,10 @@ interface HoursData {
 export default function AboutPage() {
   const { lang } = useLanguage();
   const { openingHours: openingText, contact } = getStrings(lang);
-  const openingHours = getOpeningHours(lang);
+  const openingHours = upcomingHours(useSiteContent(), lang);
 
   return (
-    <div className="bg-linear-to-r from-gray-50 to-white">
+    <div className="hall-page">
       <section className="px-4 pt-16" aria-label="Öppettider hero">
         <h1 className="text-5xl font-bold text-center mb-6 text-gray-800">
           {openingText.heroTitle}
@@ -32,9 +33,9 @@ export default function AboutPage() {
       <section className="px-4 mb-16" aria-label="Öppettider och information">
         <div className="container mx-auto max-w-4xl">
           {/* Opening Hours */}
-          <article className="bg-white rounded-lg shadow-lg p-8 mb-12" aria-label="Öppettider lista">
+          <article className="hall-panel p-8 mb-12" aria-label="Öppettider lista">
             <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">
-              {openingText.secondaryTitle}
+              {lang === 'sv' ? 'Kommande sju dagar' : 'Next seven days'}
             </h2>
             <div className="space-y-3">
               {openingHours.map((hours: HoursData) => (
@@ -56,7 +57,7 @@ export default function AboutPage() {
             </div>
           </article>
 
-          <article className="bg-white rounded-lg shadow-lg p-8 mb-12" aria-label="Information om öppettider">
+          <article className="hall-panel p-8 mb-12" aria-label="Information om öppettider">
             <h2 className="text-3xl font-bold mb-6 text-gray-800">
               {openingText.infoTitle}
             </h2>
@@ -71,7 +72,7 @@ export default function AboutPage() {
           </article>
 
           {/* Contact Information */}
-          <aside className="mt-16 bg-linear-to-r from-red-800 to-rose-800 rounded-lg shadow-lg p-8 max-w-4xl mx-auto text-white" aria-label="Boka bowling">
+          <aside className="mt-16 hall-callout   p-8 max-w-4xl mx-auto text-white" aria-label="Boka bowling">
             <h2 className="text-3xl font-bold mb-4">{openingText.bookTitle}</h2>
             <p className="mb-6">
               {openingText.bookBody}<br/> {openingText.body1} <strong><a href={`tel:${contact.phone}`}>{contact.phone}</a></strong> {openingText.body2} <strong><a href={`mailto:${contact.email}`}>{contact.email}</a></strong>.

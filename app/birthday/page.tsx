@@ -1,3 +1,4 @@
+import { ContentBoundary } from "@/lib/ContentContext";
 import BirthdayPageClient from "./BirthdayPageClient";
 import { createFaqJsonLd } from "@/lib/faqSchema";
 import { createPageMetadata } from "@/lib/metadata";
@@ -10,7 +11,7 @@ const faqJsonLd = createFaqJsonLd(routeSeo.birthday.path, stringsSv.birthday.faq
 export default function BirthdayPage() {
   return (
     <>
-      <BirthdayPageClient />
+      <ContentBoundary><BirthdayPageClient /></ContentBoundary>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

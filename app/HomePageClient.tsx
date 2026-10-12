@@ -1,168 +1,51 @@
 'use client';
-
-import Link from "next/link";
-import Image from "next/image";
-import FaqSection from "@/components/FaqSection";
-import { getStrings } from "@/lib/strings";
-import { useLanguage } from "@/lib/LanguageContext";
-import { business } from "@/lib/seo";
-
-const HERO_IMAGE_URL = "/hero-bowling-lanes.jpg";
+import Link from 'next/link';
+import Image from 'next/image';
+import FaqSection from '@/components/FaqSection';
+import { useLanguage } from '@/lib/LanguageContext';
+import { getStrings } from '@/lib/strings';
+import { business } from '@/lib/seo';
 
 export default function Home() {
   const { lang } = useLanguage();
-  const t = getStrings(lang);
-  const { home, contact } = t;
-  const phoneHref = `tel:${contact.phone.replace(/\s|-/g, "")}`;
+  const sv = lang === 'sv';
+  const { home, contact } = getStrings(lang);
+  return <div className="hall-home">
+    <section className="home-hero">
+      <div className="home-hero-copy">
+        <p className="eyebrow">Karlavägen 2 · Kristianstad</p>
+        <h1>{sv ? <>Vi ses<br />på banan.</> : <>See you<br />on the lanes.</>}</h1>
+        <p className="hero-description">{sv ? 'En runda med kompisarna. En match med familjen. Hos oss finns plats för både vinnarskallar och nybörjare.' : 'A game with friends. A match with family. There’s room here for competitive spirits and first-timers alike.'}</p>
+        <div className="hero-actions"><a className="hall-button light" href="tel:+4644122215">{sv ? 'Ring och boka' : 'Call to book'} <span aria-hidden="true">↗</span></a><Link className="text-link" href="/pricing">{sv ? 'Se våra priser' : 'See our prices'}</Link></div>
+        <div className="hero-footnote"><span className="lane-lines" aria-hidden="true" /><span>{sv ? 'Bowling. Precis som det ska vara.' : 'Bowling. Just as it should be.'}</span></div>
+      </div>
+      <div className="home-hero-photo"><Image src="/hero-bowling-lanes.jpg" alt={sv ? 'Käglor och träbanor i en bowlinghall' : 'Pins and wooden bowling lanes'} fill priority sizes="(max-width: 760px) 100vw, 56vw" className="object-cover" /><div className="photo-label">BOWLING KRISTIANSTAD <span aria-hidden="true">↙</span></div></div>
+    </section>
 
-  return (
-    <div className="bg-linear-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="relative min-h-[calc(100vh-96px)] flex items-center justify-center text-white" aria-label="Startsida hero">
-        <div className="absolute inset-0">
-          <Image
-            src={HERO_IMAGE_URL}
-            alt="Bowling Kristianstad"
-            fill
-            priority
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/50 to-black/40" />
-        </div>
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            {home.heroTitle}
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-            {home.heroSubtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/pricing"
-              className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-400 transition-colors"
-            >
-              {home.heroPrimaryCta}
-            </Link>
-            <Link
-              href="/about"
-              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-colors"
-            >
-              {home.heroSecondaryCta}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Local Intro Section */}
-      <section className="px-4 py-16 bg-white" aria-label={home.localIntroTitle}>
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold mb-6 text-gray-900">
-            {home.localIntroTitle}
-          </h2>
-          <div className="space-y-4 text-lg text-gray-600">
-            {home.localIntroParagraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Booking Section */}
-      <section className="px-4 pb-16 bg-white" aria-label={home.bookingTitle}>
-        <div className="container mx-auto max-w-4xl">
-          <aside className="bg-linear-to-r from-red-800 to-rose-800 rounded-lg shadow-lg p-8 text-white">
-          <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-4">{home.bookingTitle}</h2>
-              <p>{home.bookingBody}</p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
-              <a
-                href={phoneHref}
-                className="rounded-lg bg-white px-6 py-3 text-center font-semibold text-gray-900 transition hover:bg-gray-200"
-              >
-                {home.bookingCallButton}
-              </a>
-              <a
-                href={`mailto:${contact.email}`}
-                className="rounded-lg border border-white px-6 py-3 text-center font-semibold text-white transition hover:bg-white hover:text-gray-900"
-              >
-                {home.bookingEmailButton}
-              </a>
-            </div>
-          </div>
-          </aside>
-        </div>
-      </section>
-
-      {/* Popular Choices */}
-      <section className="px-4 pb-20 bg-white" aria-label={home.popularChoicesTitle}>
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-            {home.popularChoicesTitle}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {home.popularChoices.map((choice) => (
-              <article key={choice.title} className="rounded-lg border border-gray-200 bg-gray-50 p-8 shadow-sm">
-                <h3 className="text-2xl font-semibold mb-4 text-gray-900">{choice.title}</h3>
-                <p className="text-gray-600 mb-6">{choice.body}</p>
-                <Link href={choice.href} className="font-semibold text-red-800 underline underline-offset-4 hover:text-red-900">
-                  {choice.label}
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="relative bg-linear-to-r from-red-800 to-rose-800 text-white py-20 px-4" aria-label="Boka nu">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">{home.ctaTitle}</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">{home.ctaBody}</p>
-          <Link
-            href="/pricing"
-            className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-400 transition-colors inline-block"
-          >
-            {home.ctaButton}
-          </Link>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <FaqSection
-        title={home.faqTitle}
-        intro={home.faqIntro}
-        items={home.faqItems}
-        contactPhone={contact.phone}
-      />
-
-      {/* Map Section */}
-      <section id="hitta-hit" className="bg-linear-to-r from-red-800 to-rose-800 text-white" aria-label="Hitta hit">
-        <div className="container mx-auto px-4 py-10 text-center">
-          <h2 className="text-4xl font-bold">{home.mapHeading}</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-white/90">{home.mapBody}</p>
-          <a
-            href={business.mapUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-block rounded-lg bg-white px-6 py-3 font-semibold text-gray-900 transition hover:bg-gray-200"
-          >
-            {home.mapButton}
-          </a>
-        </div>
-        <div className="w-full">
-          <iframe
-            title="Karta till Bowling Kristianstad"
-            src="https://www.google.com/maps?q=56.0234928,14.1632581&z=17&hl=sv&output=embed"
-            width="100%"
-            height="450"
-            style={{ border: 0 }}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-      </section>
+    <div className="hall-quick-links">
+      <a href="tel:+4644122215"><span className="eyebrow">{sv ? 'Boka din bana' : 'Book your lane'}</span><strong>044-12 22 15</strong><span aria-hidden="true">↗</span></a>
+      <Link href="/openinghours"><span className="eyebrow">{sv ? 'Planera ditt besök' : 'Plan your visit'}</span><strong>{sv ? 'Öppettider' : 'Opening hours'}</strong><span aria-hidden="true">↗</span></Link>
+      <Link href="/pricing"><span className="eyebrow">{sv ? 'Skohyran ingår alltid' : 'Shoe rental included'}</span><strong>{sv ? 'Priser & bowling' : 'Prices & bowling'}</strong><span aria-hidden="true">↗</span></Link>
     </div>
-  );
+
+    <section className="hall-section home-gather">
+      <div className="gather-intro"><p className="eyebrow">{sv ? 'En anledning att träffas' : 'A reason to get together'}</p><h2>{sv ? <>Lite tävling.<br /><em>Mycket umgänge.</em></> : <>A little competition.<br /><em>A lot of good company.</em></>}</h2><p>{sv ? 'Du behöver inte kunna slå en strike för att trivas här. Ta med familjen, utmana kollegorna eller samla hela gänget. Vi ordnar banan.' : 'You don’t need to bowl a strike to feel at home here. Bring the family, challenge your colleagues or gather your friends. We’ll sort out the lane.'}</p></div>
+      <div className="occasion-list">
+        {[
+          { href: '/birthday', name: sv ? 'Barnkalas på banan' : 'Birthday parties', text: sv ? 'Bowling, mat och något att fira. Vi hjälper till med kalaset.' : 'Bowling, food and something to celebrate. Let us help with the party.' },
+          { href: '/event', name: sv ? 'Hela gänget, hela hallen' : 'Your group, your hall', text: sv ? 'Samla jobbet eller vännerna för bowling och en bit mat.' : 'Bring colleagues or friends together for bowling and a bite to eat.' },
+          { href: '/results', name: sv ? 'För dig som vill lite mer' : 'For the competitive ones', text: sv ? 'Föreningar, tävlingar och resultat. Hitta din nästa match.' : 'Clubs, competitions and results. Find your next match.' },
+        ].map((item, index) => <Link className="occasion-row" key={item.href} href={item.href}><span className="occasion-number">0{index + 1}</span><div><h3>{item.name}</h3><p>{item.text}</p></div><span className="occasion-arrow" aria-hidden="true">↗</span></Link>)}
+      </div>
+    </section>
+
+    <section className="home-social">
+      <div className="social-photo"><Image src="/event-bowling-drinks.jpg" alt={sv ? 'Vänner som umgås mellan bowlingrundorna' : 'Friends spending time together between games'} fill sizes="(max-width: 760px) 100vw, 55vw" className="object-cover" /></div>
+      <div className="social-copy"><p className="eyebrow">{sv ? 'En kväll tillsammans' : 'An evening together'}</p><h2>{sv ? <>Mer än<br />bara käglor.</> : <>More than<br />just pins.</>}</h2><p>{sv ? 'Det bästa med bowling händer ibland mellan slagen. Snacket, skratten och den där revanschen. Kombinera ert besök med mat – hör av er så planerar vi tillsammans.' : 'Sometimes the best part of bowling happens between turns. The chats, the laughs and that rematch. Add food to your visit – give us a call and we’ll plan it together.'}</p><Link className="text-link" href="/event">{sv ? 'Mat, fest & företagsevent' : 'Food, parties & company events'} <span aria-hidden="true">↗</span></Link></div>
+    </section>
+
+    <FaqSection title={sv ? 'Bra att veta innan du kommer.' : 'Before you visit.'} items={home.faqItems} contactPhone={contact.phone} />
+
+    <section className="hall-section home-visit" id="hitta-hit"><div><p className="eyebrow">{sv ? 'Välkommen in' : 'Come on in'}</p><h2>{sv ? 'Vi finns i Kristianstad.' : 'Find us in Kristianstad.'}</h2><p>Karlavägen 2<br />291 54 Kristianstad</p><p>{sv ? 'Nära Kristianstad Arena. Ring oss för att boka en bana eller om du undrar över något.' : 'Near Kristianstad Arena. Call to book a lane or ask us anything.'}</p><a className="hall-button" href={business.mapUrl} target="_blank" rel="noopener noreferrer">{sv ? 'Visa vägbeskrivning' : 'Get directions'} <span aria-hidden="true">↗</span></a></div><iframe title={sv ? 'Karta till Bowling Kristianstad' : 'Map to Bowling Kristianstad'} src="https://www.google.com/maps?q=56.0234928,14.1632581&z=17&hl=sv&output=embed" width="100%" height="380" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></section>
+  </div>;
 }

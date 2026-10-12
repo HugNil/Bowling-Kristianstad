@@ -1,4 +1,4 @@
-import { ExtraItem, MenuItem } from './types';
+import type { ExtraItem, MenuItem } from './types';
 
 type Locale = 'sv' | 'en';
 
@@ -92,7 +92,7 @@ const eventMenus: Record<Locale, MenuItem[]> = {
       id: 'meny1',
       name: 'Menu 1',
       price: 149,
-      unit: 'kr/child (children under 12 100kr)',
+      unit: 'kr/person (children under 12 100kr)',
       description: 'Tacos with various toppings',
     },
     {

@@ -6,11 +6,11 @@ A modern bowling alley website built with Next.js, TypeScript, Tailwind CSS, Fir
 
 - 🎳 Modern, responsive design with Tailwind CSS
 - 📱 Mobile-friendly navigation
-- ⚡ Built with Next.js 15 and TypeScript for optimal performance
+- ⚡ Built with Next.js 16 and TypeScript for optimal performance
 
 ## Tech Stack
 
-- **Framework:** Next.js 15 (App Router)
+- **Framework:** Next.js 16 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4
 - **Deployment:** Vercel ??
@@ -19,7 +19,7 @@ A modern bowling alley website built with Next.js, TypeScript, Tailwind CSS, Fir
 
 ### Prerequisites
 
-- Node.js 18+ and npm
+- Node.js 22.18+ and npm
 
 ### Installation
 
@@ -102,3 +102,7 @@ Edit the contact details in:
 
 For questions or issues, please contact the development team.
 
+
+## Administration med Firebase
+
+Öppettider, datumundantag, menyer och priser redigeras på `/admin`. Se [installationsguiden](docs/firebase.md) för Firebase-konfiguration, personalbehörigheter, första publicering och drift.
