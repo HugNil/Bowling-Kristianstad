@@ -11,6 +11,7 @@ export default function Home() {
   const sv = lang === 'sv';
   const { home, contact } = getStrings(lang);
   return <div className="hall-home">
+    <div className="home-first-screen">
     <section className="home-hero">
       <div className="home-hero-copy">
         <p className="eyebrow">Karlavägen 2 · Kristianstad</p>
@@ -19,13 +20,15 @@ export default function Home() {
         <div className="hero-actions"><a className="hall-button light" href="tel:+4644122215">{sv ? 'Ring och boka' : 'Call to book'} <span aria-hidden="true">↗</span></a><Link className="text-link" href="/pricing">{sv ? 'Se våra priser' : 'See our prices'}</Link></div>
         <div className="hero-footnote"><span className="lane-lines" aria-hidden="true" /><span>{sv ? 'Bowling. Precis som det ska vara.' : 'Bowling. Just as it should be.'}</span></div>
       </div>
-      <div className="home-hero-photo"><Image src="/hero-bowling-lanes.jpg" alt={sv ? 'Käglor och träbanor i en bowlinghall' : 'Pins and wooden bowling lanes'} fill priority sizes="(max-width: 760px) 100vw, 56vw" className="object-cover" /><div className="photo-label">BOWLING KRISTIANSTAD <span aria-hidden="true">↙</span></div></div>
+      <div className="home-hero-photo"><Image src="/hero-bowling-lanes.jpg" alt={sv ? 'Käglor och träbanor i en bowlinghall' : 'Pins and wooden bowling lanes'} fill priority sizes="(max-width: 760px) 100vw, 60vw" className="object-cover" /><div className="photo-label">BOWLING KRISTIANSTAD <span aria-hidden="true">↙</span></div></div>
     </section>
 
     <div className="hall-quick-links">
       <a href="tel:+4644122215"><span className="eyebrow">{sv ? 'Boka din bana' : 'Book your lane'}</span><strong>044-12 22 15</strong><span aria-hidden="true">↗</span></a>
       <Link href="/openinghours"><span className="eyebrow">{sv ? 'Planera ditt besök' : 'Plan your visit'}</span><strong>{sv ? 'Öppettider' : 'Opening hours'}</strong><span aria-hidden="true">↗</span></Link>
       <Link href="/pricing"><span className="eyebrow">{sv ? 'Skohyran ingår alltid' : 'Shoe rental included'}</span><strong>{sv ? 'Priser & bowling' : 'Prices & bowling'}</strong><span aria-hidden="true">↗</span></Link>
+    </div>
+
     </div>
 
     <section className="hall-section home-gather">

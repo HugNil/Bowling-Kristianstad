@@ -3,7 +3,7 @@ export const SITE_NAME = "Bowling Kristianstad";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/hero-bowling-lanes.jpg`;
 export const EVENT_OG_IMAGE = `${SITE_URL}/event-bowling-drinks.jpg`;
 export const BIRTHDAY_OG_IMAGE = `${SITE_URL}/gemini_birthday.png`;
-export const LOGO_IMAGE = `${SITE_URL}/bowlit-150x150.png`;
+export const LOGO_IMAGE = `${SITE_URL}/bowling-kristianstad-transparent.png`;
 
 export const business = {
   name: SITE_NAME,

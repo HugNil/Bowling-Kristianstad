@@ -37,8 +37,21 @@ export default function BirthdayPage() {
 
   return (
     <div className="hall-page">
-      <section className="page-masthead" aria-label="Barnkalas">
-        <div className="container mx-auto"><p className="eyebrow mb-5">{lang === 'sv' ? 'Fira på banan' : 'Celebrate on the lanes'}</p><h1 className="mb-5">{birthday.heroTitle}</h1><p className="max-w-2xl text-lg">{birthday.heroSubtitle}</p></div>
+      <section
+        aria-label={lang === 'sv' ? 'Kalas & Party' : 'Birthday parties'}
+        style={{
+          backgroundImage: "url('/gemini_birthday.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        className="text-white min-h-[40vh] px-4 py-12 relative flex flex-col items-center justify-center"
+      >
+        <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
+        <div className="container mx-auto text-center relative z-10">
+          <h1 className="text-5xl font-bold mb-6">{birthday.heroTitle}</h1>
+          <p className="text-xl max-w-3xl mx-auto">{birthday.heroSubtitle}</p>
+        </div>
       </section>
 
       {/* Intro */}

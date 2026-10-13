@@ -7,6 +7,7 @@ import { ContentProvider } from "@/lib/ContentContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookingBubble from "@/components/BookingBubble";
+import QuestionChat from "@/components/QuestionChat";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import {
   absoluteUrl,
@@ -160,6 +161,7 @@ export default async function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
           />
           <BookingBubble />
+          <QuestionChat />
           <Footer />
         </ContentProvider>
         </LanguageProvider>
